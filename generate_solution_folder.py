@@ -24,12 +24,16 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = 217
-    problem_title = "Contains Duplicate"
+    problem_number = 326
+    problem_title = "Power of Three"
     solution_code = '''
 class Solution:
-    def containsDuplicate(self, nums: List[int]) -> bool:
-        return len(nums) != len(set(nums))
+    def isPowerOfThree(self, n: int) -> bool:
+        if n<=0:
+            return False
+        while n%3==0:
+            n//=3
+        return n==1
 '''
 
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
