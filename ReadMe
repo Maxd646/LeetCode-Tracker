@@ -4,9 +4,9 @@ This repository contains my personal solutions to [LeetCode](https://leetcode.co
 
 Each problem includes:
 
-- ✅ A clean, efficient **Python solution**
-- 📄 A `README.md` with **problem description**, examples, and explanations
-- 📁 A folder under `leetcode-solutions/` named using the problem number and title
++ ✅ A clean, efficient **Python solution**
++ 📄 A `README.md` with **problem description**, examples, and explanations
++ 📁 A folder under `leetcode-solutions/` named using the problem number and title
 
 ---
 
@@ -14,10 +14,10 @@ Each problem includes:
 
 This repository helps me:
 
-- Practice daily coding and problem-solving
-- Track my learning progress over time
-- Prepare for technical interviews
-- Build a clear and organized portfolio of LeetCode solutions
++ Practice daily coding and problem-solving
++ Track my learning progress over time
++ Prepare for technical interviews
++ Build a clear and organized portfolio of LeetCode solutions
 
 ---
 
