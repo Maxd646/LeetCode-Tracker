@@ -5,6 +5,7 @@
 ## Description
 
 *Time Complexity: O(Sqrt(Num))
+
 Space Complexity: O(1)*
 
 ## Solution
