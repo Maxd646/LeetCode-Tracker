@@ -18,14 +18,14 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     with open(os.path.join(base_path, "README.md"), "w", encoding="utf-8") as f:
         f.write(f"# Leetcode {problem_number} - {title}\n\n")
         f.write(f"[🔗 Problem Link](https://leetcode.com/problems/{slugify(title)}/)\n\n")
-        f.write("## Description\n\n*Add problem description here...*\n\n")
+        f.write("## Description\n\n*Time Complexity: O(Sqrt(Num))\nSpace Complexity: O(1)*\n\n")
         f.write("## Solution\n\nSee [`solution.py`](solution.py)\n")
 
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = 342
-    problem_title = "Power of Four"
+    problem_number = 507
+    problem_title = "Perfect Number"
     solution_code = '''
 class Solution:
     def checkPerfectNumber(self, num: int) -> bool:
