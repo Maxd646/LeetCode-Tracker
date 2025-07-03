@@ -24,13 +24,16 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = 58
-    problem_title = "Length of Last Word"
+    problem_number = 342
+    problem_title = "Power of Four"
     solution_code = '''
 class Solution:
-    def lengthOfLastWord(self, s: str) -> int:
-        words = s.split()
-        return len(words[-1])
+    def isPowerOfFour(self, n: int) -> bool:
+        if n<1:
+            return False 
+        while n%4==0:
+            n//=4
+        return n==1
 '''
 
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
