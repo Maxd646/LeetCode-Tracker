@@ -1,22 +1,23 @@
-# Leetcode 88: Merge Sorted Array
-# https://leetcode.com/problems/merge-sorted-array/
-
 class Solution:
-    def addToArrayForm(self, num: List[int], k: int) -> List[int]:
-        res = []
-        i = len(num) - 1
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+        """
+        Do not return anything, modify nums1 in-place instead.
+        """
+        i, j, k = m - 1, n - 1, m + n - 1  
+        while i >= 0 and j >= 0:
+            if nums1[i] > nums2[j]:
+                nums1[k] = nums1[i]
+                i -= 1
+            else:
+                nums1[k] = nums2[j]
+                j -= 1
+            k -= 1
+        while j >= 0:
+            nums1[k] = nums2[j]
+            j -= 1
+            k -= 1
+            
+or      merged = sorted(nums1[:m] + nums2)
+        for i in range(m + n):
+            nums1[i] = merged[i] # o(m+n)+log(n+m)
 
-        while i >= 0 or k > 0:
-            if i >= 0:
-                k += num[i]
-            res.append(k % 10)
-            k //= 10
-            i -= 1
-
-        return res[::-1]  
-# or     
-class Solution:
-    def addToArrayForm(self, num: List[int], k: int) -> List[int]:
-        m= int(''.join(str(digit) for digit in num))
-        total = k+m
-        return [int(d) for d in str(total)]
