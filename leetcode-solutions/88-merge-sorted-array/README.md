@@ -4,7 +4,7 @@
 
 ## Description
 
-*Time Complexity: O(n))
+*Time Complexity: O(n+m))
 Space Complexity: O(n)*
 
 ## Solution
