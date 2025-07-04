@@ -24,23 +24,19 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = 125
-    problem_title = "valid palindrome"
+    problem_number = 283
+    problem_title = "moves zeroes"
     solution_code = '''
-
 class Solution:
-    def isPalindrome(self, s: str) -> bool:
-        left, right = 0, len(s) - 1
-        while left < right:
-            while left < right and not s[left].isalnum():
-                left += 1
-            while left < right and not s[right].isalnum():
-                right -= 1
-            if s[left].lower() != s[right].lower():
-                return False
-            left += 1
-            right -= 1
-        return True
+    def moveZeroes(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        j = 0
+        for i in range(len(nums)):
+            if nums[i] != 0:
+                nums[j], nums[i] = nums[i], nums[j]
+                j += 1
 '''
 
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
