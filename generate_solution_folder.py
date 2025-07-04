@@ -18,28 +18,29 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     with open(os.path.join(base_path, "README.md"), "w", encoding="utf-8") as f:
         f.write(f"# Leetcode {problem_number} - {title}\n\n")
         f.write(f"[🔗 Problem Link](https://leetcode.com/problems/{slugify(title)}/)\n\n")
-        f.write("## Description\n\n*Time Complexity: O(Sqrt(Num))\nSpace Complexity: O(1)*\n\n")
+        f.write("## Description\n\n*Time Complexity: O(n))\nSpace Complexity: O(1)*\n\n")
         f.write("## Solution\n\nSee [`solution.py`](solution.py)\n")
 
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = 507
-    problem_title = "Perfect Number"
+    problem_number = 125
+    problem_title = "valid palindrome"
     solution_code = '''
+
 class Solution:
-    def checkPerfectNumber(self, num: int) -> bool:
-        if num <= 1:
-            return False
-        total = 1
-        i = 2
-        while i * i <= num:
-            if num % i == 0:
-                total += i
-                if i != num // i:
-                    total += num // i
-            i += 1
-        return total == num
+    def isPalindrome(self, s: str) -> bool:
+        left, right = 0, len(s) - 1
+        while left < right:
+            while left < right and not s[left].isalnum():
+                left += 1
+            while left < right and not s[right].isalnum():
+                right -= 1
+            if s[left].lower() != s[right].lower():
+                return False
+            left += 1
+            right -= 1
+        return True
 '''
 
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
