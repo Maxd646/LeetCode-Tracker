@@ -17,7 +17,8 @@ class Solution:
             j -= 1
             k -= 1
             
-or      merged = sorted(nums1[:m] + nums2)
-        for i in range(m + n):
-            nums1[i] = merged[i] # o(m+n)+log(n+m)
+# # or      
+#         merged = sorted(nums1[:m] + nums2)
+#         for i in range(m + n):
+#             nums1[i] = merged[i] # o(m+n)+log(n+m)
 

@@ -18,34 +18,31 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     with open(os.path.join(base_path, "README.md"), "w", encoding="utf-8") as f:
         f.write(f"# Leetcode {problem_number} - {title}\n\n")
         f.write(f"[🔗 Problem Link](https://leetcode.com/problems/{slugify(title)}/)\n\n")
-        f.write("## Description\n\n*Time Complexity: O(n))\nSpace Complexity: O(n)*\n\n")
+        f.write("## Description\n\n*Time Complexity: O(1))\nSpace Complexity: O(1)*\n\n")
         f.write("## Solution\n\nSee [`solution.py`](solution.py)\n")
 
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = 989
-    problem_title = "Add to Array-Form of Integer"
+    problem_number = "509"
+    problem_title = "Advanced Fibonacci Number"
     solution_code = '''
 class Solution:
-    def addToArrayForm(self, num: List[int], k: int) -> List[int]:
-        res = []
-        i = len(num) - 1
-
-        while i >= 0 or k > 0:
-            if i >= 0:
-                k += num[i]
-            res.append(k % 10)
-            k //= 10
-            i -= 1
-
-        return res[::-1]  
-# or     
+    def fib(self, n: int) -> int:
+        sqrt5 = 5 ** 0.5
+        phi = (1 + sqrt5) / 2
+        psi = (1 - sqrt5) / 2
+        return int((phi ** n - psi ** n) / sqrt5 + 0.5)
+     
+# or
 class Solution:
-    def addToArrayForm(self, num: List[int], k: int) -> List[int]:
-        m= int(''.join(str(digit) for digit in num))
-        total = k+m
-        return [int(d) for d in str(total)]
+    def fib(self, n: int) -> int:
+        if n == 0:
+            return 0
+        a, b = 0, 1
+        for _ in range(2, n + 1):
+            a, b = b, a + b
+        return b
 '''
 
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
