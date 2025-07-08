@@ -18,25 +18,23 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     with open(os.path.join(base_path, "README.md"), "w", encoding="utf-8") as f:
         f.write(f"# Leetcode {problem_number} - {title}\n\n")
         f.write(f"[🔗 Problem Link](https://leetcode.com/problems/{slugify(title)}/)\n\n")
-        f.write("## Description\n\n*Time Complexity: O(log n))\nSpace Complexity: O(1)*\n\n")
+        f.write("## Description\n\n*Time Complexity: O(log n))\nSpace Complexity: O(n)*\n\n")
         f.write("## Solution\n\nSee [`solution.py`](solution.py)\n")
 
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "9"
-    problem_title = "Palindrome Number"
+    problem_number = "1"
+    problem_title = "Two Sum"
     solution_code = '''
 class Solution:
-    def isPalindrome(self, x: int) -> bool:
-        if x<0 or (x%10==0 and x!=0):
-            return False
-        z=0
-        while x>z:
-            z=z*10+x%10
-            x//=10
-        return x==z or x== z//10
- 
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        seen = {}
+        for i, num in enumerate(nums):
+            complement = target - num
+            if complement in seen:
+                return [seen[complement], i]
+            seen[num] = i
 '''
 
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
