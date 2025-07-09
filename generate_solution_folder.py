@@ -24,17 +24,34 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "1"
-    problem_title = "Two Sum"
+    problem_number = "504"
+    problem_title = "Base 7"
     solution_code = '''
 class Solution:
-    def twoSum(self, nums: List[int], target: int) -> List[int]:
-        seen = {}
-        for i, num in enumerate(nums):
-            complement = target - num
-            if complement in seen:
-                return [seen[complement], i]
-            seen[num] = i
+    def convertToBase7(self, num: int) -> str:
+        if num == 0:
+            return "0"
+        sign = '-' if num < 0 else ''
+        num = abs(num)
+        digits = []
+        while num:
+            digits.append(str(num % 7))
+            num //= 7
+        return sign + ''.join(reversed(digits))
+# or 
+def convertToBase7(self, num: int) -> str:
+        if num==0:
+            return '0'
+        re = ""
+        negative= num<0
+        if num<0:
+            num=abs(num)
+        while num>0:
+            re= str(num%7)+re
+            num//=7
+        if negative:
+            re='-'+re
+        return re
 '''
 
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
