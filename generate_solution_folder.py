@@ -24,34 +24,22 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "414"
-    problem_title = "Third Maximum Number"
+    problem_number = "13"
+    problem_title = "Roman to Integer"
     solution_code = '''
 class Solution:
-    def thirdMax(self, nums: List[int]) -> int:
-        first = second = third = float('-inf')
-        for num in nums:
-            if num in (first, second, third):
-                continue
-            if num > first:
-                third = second
-                second = first
-                first = num
-            elif num > second:
-                third = second
-                second = num
-            elif num > third:
-                third = num
-        return third if third != float('-inf') else first
- # or 
- class Solution:
-    def thirdMax(self, nums: List[int]) -> int:
-        distinct = list(set(nums))
-        distinct.sort(reverse=True)
-        if len(distinct) >= 3:
-            return distinct[2]
-        return distinct[0]
-
+    def romanToInt(self, s: str) -> int:
+        value= {'I':1,'V':5,'X':10,'L':50,'C':100,'D':500,'M':1000 }
+        total=0
+        pre=0
+        for char in reversed(s):
+            val= value[char]
+            if val<pre:
+                total-=val
+            else:
+                total+=val
+            pre=val
+        return total
 '''
 
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
