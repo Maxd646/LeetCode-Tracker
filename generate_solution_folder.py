@@ -24,30 +24,26 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "27"
-    problem_title = "Remove Element"
+    problem_number = "2"
+    problem_title = "Reverse Integer"
     solution_code = '''
 class Solution:
-    def removeElement(self, nums: List[int], val: int) -> int:
-        k = 0
-        for i in range(len(nums)):
-            if nums[i] != val:
-                nums[k] = nums[i]
-                k += 1
-        return k
-class Solution:
-    def removeElement(self, nums: list[int], val: int) -> int:
-        i = 0
-        n = len(nums)
-
-        while i < n:
-            if nums[i] == val:
-                nums[i] = nums[n - 1]  
-                n -= 1                
-            else:
-                i += 1
-
-        return n
+    def reverse(self, x: int) -> int:
+        result = 0
+        negative = x < 0
+        x = abs(x)
+        
+        while x != 0:
+            remainder = x % 10
+            x //= 10
+            result = result * 10 + remainder
+        
+        if negative:
+            result = -result
+        if result < -2**31 or result > 2**31 - 1:
+            return 0
+        
+        return result
 '''
 
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
