@@ -1,4 +1,4 @@
-# Leetcode 2: Reverse Integer
+# Leetcode 7: Reverse Integer
 # https://leetcode.com/problems/reverse-integer/
 
 class Solution:
