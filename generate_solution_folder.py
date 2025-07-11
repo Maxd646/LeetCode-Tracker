@@ -24,19 +24,30 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "344"
-    problem_title = "Reverse String"
+    problem_number = "27"
+    problem_title = "Remove Element"
     solution_code = '''
 class Solution:
-    def reverseString(self, s: List[str]) -> None:
-        """
-        Do not return anything, modify s in-place instead.
-        """
-        for i in range(0, len(s)//2):
-            other = len(s)-i-1
-            s[i], s[other] = s[other], s[i]
-# or
-         s=s.reverse()
+    def removeElement(self, nums: List[int], val: int) -> int:
+        k = 0
+        for i in range(len(nums)):
+            if nums[i] != val:
+                nums[k] = nums[i]
+                k += 1
+        return k
+class Solution:
+    def removeElement(self, nums: list[int], val: int) -> int:
+        i = 0
+        n = len(nums)
+
+        while i < n:
+            if nums[i] == val:
+                nums[i] = nums[n - 1]  
+                n -= 1                
+            else:
+                i += 1
+
+        return n
 '''
 
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
