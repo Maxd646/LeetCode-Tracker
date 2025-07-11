@@ -24,32 +24,19 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "151"
-    problem_title = "Reverse Words in a String"
+    problem_number = "344"
+    problem_title = "Reverse String"
     solution_code = '''
 class Solution:
-    def reverseWords(self, s: str) -> str:
-        words=s.strip().split()
-        word =reversed(words)
-        return " ".join(word)
-class Solution:
-    def reverseWords(self, s: str) -> str:
-        if s==" ":
-            return False
-        res = []
-        i = len(s) - 1
-
-        while i >= 0:
-            while i >= 0 and s[i] == ' ':
-                i -= 1
-            if i < 0:
-                break
-            j = i
-            while i >= 0 and s[i] != ' ':
-                i -= 1
-            res.append(s[i+1:j+1])
-        
-        return ' '.join(res)
+    def reverseString(self, s: List[str]) -> None:
+        """
+        Do not return anything, modify s in-place instead.
+        """
+        for i in range(0, len(s)//2):
+            other = len(s)-i-1
+            s[i], s[other] = s[other], s[i]
+# or
+         s=s.reverse()
 '''
 
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
