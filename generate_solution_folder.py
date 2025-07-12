@@ -24,18 +24,15 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "189"
-    problem_title = "Rotate Array"
+    problem_number = "242"
+    problem_title = "valid anagram"
     solution_code = '''
 class Solution:
-    def rotate(self, nums: List[int], k: int) -> None:
-        """
-        Do not return anything, modify nums in-place instead.
-        """
-        k=k%len(nums)
-        stre= nums.copy()
-        for i in range(len(nums)):
-            nums[i]=stre[-k+i]
+    def isAnagram(self, s: str, t: str) -> bool:
+        return Counter(s) == Counter(t)
+# or but slower
+        return sorted(s) == sorted(t)
+# Time Complexity: O(n log n) for sorting, O(n) for counting     
 '''
 
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
