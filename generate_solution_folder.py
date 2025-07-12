@@ -24,26 +24,18 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "2"
-    problem_title = "Reverse Integer"
+    problem_number = "189"
+    problem_title = "Rotate Array"
     solution_code = '''
 class Solution:
-    def reverse(self, x: int) -> int:
-        result = 0
-        negative = x < 0
-        x = abs(x)
-        
-        while x != 0:
-            remainder = x % 10
-            x //= 10
-            result = result * 10 + remainder
-        
-        if negative:
-            result = -result
-        if result < -2**31 or result > 2**31 - 1:
-            return 0
-        
-        return result
+    def rotate(self, nums: List[int], k: int) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        k=k%len(nums)
+        stre= nums.copy()
+        for i in range(len(nums)):
+            nums[i]=stre[-k+i]
 '''
 
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
