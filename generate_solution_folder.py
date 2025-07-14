@@ -24,26 +24,21 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "389"
-    problem_title = "Find the Difference"
+    problem_number = "3423"
+    problem_title = "Maximum difference between adjacent elements in circular array"
     solution_code = '''
 class Solution:
-    def findTheDifference(self, s: str, t: str) -> str:
-        result = 0
-        for ch in s + t:
-            result ^= ord(ch)
-        return chr(result)
-
-# or 
+    def maxAdjacentDistance(self, nums: List[int]) -> int:
+        diff_max=0
+        for i in range(len(nums)):
+            n= (i+1)%len(nums)
+            if abs(nums[i]-nums[n])>diff_max:
+                diff_max=abs(nums[i]-nums[n])
+        return diff_max
+# or by using built-in max function
 class Solution:
-    def findTheDifference(self, s: str, t: str) -> str:
-        return chr(sum(map(ord, t)) - sum(map(ord, s))) 
-# or
-class Solution:
-    def findTheDifference(self, s: str, t: str) -> str:
-        for a in t:
-            if t.count(a)>s.count(a):
-                return a
+    def maxAdjacentDistance(self, nums: List[int]) -> int:
+        return max(abs(nums[i] - nums[(i + 1) % len(nums)]) for i in range(len(nums)))
 '''
 
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
