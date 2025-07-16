@@ -18,22 +18,27 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     with open(os.path.join(base_path, "README.md"), "w", encoding="utf-8") as f:
         f.write(f"# Leetcode {problem_number} - {title}\n\n")
         f.write(f"[🔗 Problem Link](https://leetcode.com/problems/{slugify(title)}/)\n\n")
-        f.write("## Description\n\n*Time Complexity: O(m+n))\nSpace Complexity: O(1)*\n\n")
+        f.write("## Description\n\n*Time Complexity: O(n))\nSpace Complexity: O(1)*\n\n")
         f.write("## Solution\n\nSee [`solution.py`](solution.py)\n")
 
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "349"
-    problem_title = "intersection of two arrays"
+    problem_number = "485"
+    problem_title = "Max Consecutive Ones"
     solution_code = '''
+
 class Solution:
-    def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
-        return list(set(nums1) & set(nums2))
-# or  for flixbibility with input types
-def intersection(nums1, nums2):
-    s2 = set(nums2)
-    return list({x for x in nums1 if x in s2})
+    def findMaxConsecutiveOnes(self, nums: List[int]) -> int:
+        max_ones = current = 0
+        for i in range(len(nums)):
+            if nums[i] == 1:
+                current += 1
+                if current > max_ones:
+                    max_ones = current
+            else:
+                current = 0
+        return max_ones
 '''
 
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
