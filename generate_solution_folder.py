@@ -24,21 +24,20 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "485"
-    problem_title = "Max Consecutive Ones"
+    problem_number = "392"
+    problem_title = " is Subsequence "
     solution_code = '''
 
 class Solution:
-    def findMaxConsecutiveOnes(self, nums: List[int]) -> int:
-        max_ones = current = 0
-        for i in range(len(nums)):
-            if nums[i] == 1:
-                current += 1
-                if current > max_ones:
-                    max_ones = current
-            else:
-                current = 0
-        return max_ones
+    def isSubsequence(self, s: str, t: str) -> bool:
+        i, j = 0, 0
+    
+        while i < len(s) and j < len(t):
+            if s[i] == t[j]:
+                i += 1 
+            j += 1  
+        return i == len(s)
+
 '''
 
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
