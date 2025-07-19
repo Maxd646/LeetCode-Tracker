@@ -10,4 +10,4 @@ class Solution:
             other = len(s)-i-1
             s[i], s[other] = s[other], s[i]
 # or
-         s=s.reverse()
+        s.reverse()
