@@ -24,21 +24,24 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "234"
-    problem_title = "Palindrome Linked List"
+    problem_number = "169"
+    problem_title = "Majority Element"
     solution_code = '''
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
 class Solution:
-    def isPalindrome(self, head: Optional[ListNode]) -> bool:
-        vals=[]
-        while head:
-            vals.append(head.val)
-            head= head.next
-        return vals==vals[::-1]
+    def majorityElement(self, nums: List[int]) -> int:
+        count =0
+        candidate=0
+        for num in nums:
+            if count ==0:
+                candidate=num
+            count+=1 if num==candidate else -1
+        return candidate
+# or
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        for num in nums:
+            if nums.count(num)>len(nums)//2:
+                return num
 '''
 
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
