@@ -18,30 +18,18 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     with open(os.path.join(base_path, "README.md"), "w", encoding="utf-8") as f:
         f.write(f"# Leetcode {problem_number} - {title}\n\n")
         f.write(f"[🔗 Problem Link](https://leetcode.com/problems/{slugify(title)}/)\n\n")
-        f.write("## Description\n\n*Time Complexity: O(n))\nSpace Complexity: O(n)*\n\n")
+        f.write("## Description\n\n*Time Complexity: O(n))\nSpace Complexity: O(1)*\n\n")
         f.write("## Solution\n\nSee [`solution.py`](solution.py)\n")
 
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "169"
-    problem_title = "Majority Element"
+    problem_number = "1748"
+    problem_title = "Sum of Unique Elements"
     solution_code = '''
 class Solution:
-    def majorityElement(self, nums: List[int]) -> int:
-        count =0
-        candidate=0
-        for num in nums:
-            if count ==0:
-                candidate=num
-            count+=1 if num==candidate else -1
-        return candidate
-# or
-class Solution:
-    def majorityElement(self, nums: List[int]) -> int:
-        for num in nums:
-            if nums.count(num)>len(nums)//2:
-                return num
+    def sumOfUnique(self, nums: List[int]) -> int:
+        return sum(num for num in nums if nums.count(num)==1)
 '''
 
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
