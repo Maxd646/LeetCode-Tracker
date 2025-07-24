@@ -18,18 +18,41 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     with open(os.path.join(base_path, "README.md"), "w", encoding="utf-8") as f:
         f.write(f"# Leetcode {problem_number} - {title}\n\n")
         f.write(f"[🔗 Problem Link](https://leetcode.com/problems/{slugify(title)}/)\n\n")
-        f.write("## Description\n\n*Time Complexity: O(n))\nSpace Complexity: O(1)*\n\n")
+        f.write("## Description\n\n*Time Complexity: O(logn))\nSpace Complexity: O(1)*\n\n")
         f.write("## Solution\n\nSee [`solution.py`](solution.py)\n")
 
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "1748"
-    problem_title = "Sum of Unique Elements"
+    problem_number = "367"
+    problem_title = "Valid Perfect Square"
     solution_code = '''
 class Solution:
-    def sumOfUnique(self, nums: List[int]) -> int:
-        return sum(num for num in nums if nums.count(num)==1)
+    def isPerfectSquare(self, num: int) -> bool:
+        if num < 2:
+            return True
+
+        left, right = 2, num // 2
+
+        while left <= right:
+            mid = (left + right) // 2
+            square = mid * mid
+
+            if  square == num:
+                return True
+            elif square < num:
+                left = mid + 1
+            else:
+                right = mid - 1
+
+        return False
+# or time complexity O(n)
+class Solution:
+    def isPerfectSquare(self, num: int) -> bool:
+        for i in range(num//2+1):
+            if num==i*i:
+                return True
+        return False
 '''
 
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
