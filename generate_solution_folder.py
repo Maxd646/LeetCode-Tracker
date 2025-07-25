@@ -24,35 +24,33 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "367"
-    problem_title = "Valid Perfect Square"
+    problem_number = "75"
+    problem_title = "Sort Colors"
     solution_code = '''
 class Solution:
-    def isPerfectSquare(self, num: int) -> bool:
-        if num < 2:
-            return True
+    def sortColors(self, nums: List[int]) -> None:
+        low, mid, high = 0, 0, len(nums) - 1
 
-        left, right = 2, num // 2
-
-        while left <= right:
-            mid = (left + right) // 2
-            square = mid * mid
-
-            if  square == num:
-                return True
-            elif square < num:
-                left = mid + 1
-            else:
-                right = mid - 1
-
-        return False
-# or time complexity O(n)
+        while mid <= high:
+            if nums[mid] == 0:
+                nums[low], nums[mid] = nums[mid], nums[low]
+                low += 1
+                mid += 1
+            elif nums[mid] == 1:
+                mid += 1
+            else:  # nums[mid] == 2
+                nums[mid], nums[high] = nums[high], nums[mid]
+                high -= 1
+# or bubble sort
+            # Time Complexity: O(n^2)
+            # Space Complexity: O(1)  
 class Solution:
-    def isPerfectSquare(self, num: int) -> bool:
-        for i in range(num//2+1):
-            if num==i*i:
-                return True
-        return False
+    def sortColors(self, nums: List[int]) -> None:
+        n = len(nums)
+        for i in range(n-1):
+            for j in range(n-i-1):
+                if nums[j] > nums[j+1]:
+                    nums[j], nums[j+1] = nums[j+1], nums[j]  
 '''
 
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
