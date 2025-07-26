@@ -10,3 +10,6 @@ class Solution:
         stre= nums.copy()
         for i in range(len(nums)):
             nums[i]=stre[-k+i]
+        
+        # or
+        nums[:] = nums[-k:] + nums[:-k]

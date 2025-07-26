@@ -24,8 +24,8 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "75"
-    problem_title = "Sort Colors"
+    problem_number = "9999999"
+    problem_title = "Shhh"
     solution_code = '''
 class Solution:
     def sortColors(self, nums: List[int]) -> None:
