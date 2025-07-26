@@ -18,39 +18,23 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     with open(os.path.join(base_path, "README.md"), "w", encoding="utf-8") as f:
         f.write(f"# Leetcode {problem_number} - {title}\n\n")
         f.write(f"[🔗 Problem Link](https://leetcode.com/problems/{slugify(title)}/)\n\n")
-        f.write("## Description\n\n*Time Complexity: O(logn))\nSpace Complexity: O(1)*\n\n")
+        f.write("## Description\n\n*Time Complexity: O(n))\nSpace Complexity: O(1)*\n\n")
         f.write("## Solution\n\nSee [`solution.py`](solution.py)\n")
 
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "9999999"
-    problem_title = "Shhh"
+    problem_number = "789"
+    problem_title = "Rotate String"
     solution_code = '''
 class Solution:
-    def sortColors(self, nums: List[int]) -> None:
-        low, mid, high = 0, 0, len(nums) - 1
-
-        while mid <= high:
-            if nums[mid] == 0:
-                nums[low], nums[mid] = nums[mid], nums[low]
-                low += 1
-                mid += 1
-            elif nums[mid] == 1:
-                mid += 1
-            else:  # nums[mid] == 2
-                nums[mid], nums[high] = nums[high], nums[mid]
-                high -= 1
-# or bubble sort
-            # Time Complexity: O(n^2)
-            # Space Complexity: O(1)  
-class Solution:
-    def sortColors(self, nums: List[int]) -> None:
-        n = len(nums)
-        for i in range(n-1):
-            for j in range(n-i-1):
-                if nums[j] > nums[j+1]:
-                    nums[j], nums[j+1] = nums[j+1], nums[j]  
+    def rotateString(self, s: str, goal: str) -> bool:
+        if len(s)!=len(goal):
+            return False
+        for i in range(len(s)):
+            rotated= s[i:]+s[:i]
+            if goal==rotated:
+                return True
+        return False 
 '''
-
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
