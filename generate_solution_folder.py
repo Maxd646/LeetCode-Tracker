@@ -24,17 +24,25 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "789"
-    problem_title = "Rotate String"
+    problem_number = "206"
+    problem_title = "reverse-linked-list"
     solution_code = '''
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
 class Solution:
-    def rotateString(self, s: str, goal: str) -> bool:
-        if len(s)!=len(goal):
-            return False
-        for i in range(len(s)):
-            rotated= s[i:]+s[:i]
-            if goal==rotated:
-                return True
-        return False 
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        prev = None
+        
+        while head:
+            next_node = head.next   
+            head.next = prev       
+            prev = head            
+            head = next_node        
+
+        return prev
+
 '''
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
