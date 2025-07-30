@@ -24,12 +24,18 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "2235"
-    problem_title = "Add Two Number"
+    problem_number = "1323"
+    problem_title = "Maximum 69 Number"
     solution_code = '''
 class Solution:
-    def sum(self, num1: int, num2: int) -> int:
-        return num1+num2   
+    def maximum69Number (self, num: int) -> int:
+        return int(str(num).replace('6', '9', 1))
+        st= str(num)
+        for i in range(len(st)):
+            if st[i]=='6':
+                st= st[:i]+'9'+st[i+1:]
+                break
+        return int(st)
 
 '''
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
