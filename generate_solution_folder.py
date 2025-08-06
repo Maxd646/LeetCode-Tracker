@@ -24,19 +24,17 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "121"
-    problem_title = "Best Time to Buy and Sell Stock"
+    problem_number = "387"
+    problem_title = "First Unique Character in a String"
     solution_code = '''
 class Solution:
-    def maxProfit(self, prices: List[int]) -> int:
-        min_price = float('inf')
-        max_profit = 0
-
-        for price in prices:
-            min_price = min(min_price, price)
-            max_profit = max(max_profit, price - min_price)
-
-        return max_profit
+    def firstUniqChar(self, s: str) -> int:
+        fr= Counter(s)
+        for i in range(len(s)):
+            char=s[i]
+            if fr[char]==1:
+                return i
+        return -1
 
 '''
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
