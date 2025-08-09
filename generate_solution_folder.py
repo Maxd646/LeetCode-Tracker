@@ -24,21 +24,22 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "1446"
-    problem_title = "Cousecative Characters"
+    problem_number = "674"
+    problem_title = "Longest Continuous Increasing Subsequence"
     solution_code = '''
-
 class Solution:
-    def maxPower(self, s: str) -> int:
+    def findLengthOfLCIS(self, nums: List[int]) -> int:
         k=1
         m=1
-        for i in range(1, len(s)):
-            if s[i]==s[i-1]:
+        for i in range(1, len(nums)):
+            if nums[i]>nums[i-1]:
                 k+=1
-                m=max(m, k)
+                m = max(m, k)
             else:
                 k=1
-        return m  
+
+        return m
+
         
 '''
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
