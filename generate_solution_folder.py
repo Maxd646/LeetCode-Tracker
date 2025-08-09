@@ -24,29 +24,21 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "434"
-    problem_title = "Count Segments in a String"
+    problem_number = "1446"
+    problem_title = "Cousecative Characters"
     solution_code = '''
 
 class Solution:
-    def countSegments(self, s: str) -> int:
-        count = 0
-        InSegment = False
-        
-        for char in s:
-            if char != ' ':
-                if not InSegment:
-                    count += 1
-                    InSegment = True
+    def maxPower(self, s: str) -> int:
+        k=1
+        m=1
+        for i in range(1, len(s)):
+            if s[i]==s[i-1]:
+                k+=1
+                m=max(m, k)
             else:
-                InSegment = False
-        
-        return count
-
-# or
-class Solution:
-    def countSegments(self, s: str) -> int:
-        return len(s.split()) if s else 0   
+                k=1
+        return m  
         
 '''
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
