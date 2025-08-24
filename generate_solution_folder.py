@@ -24,22 +24,14 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "674"
-    problem_title = "Longest Continuous Increasing Subsequence"
+    problem_number = "1480"
+    problem_title = "Running sum of 1d array"
     solution_code = '''
 class Solution:
-    def findLengthOfLCIS(self, nums: List[int]) -> int:
-        k=1
-        m=1
+    def runningSum(self, nums: List[int]) -> List[int]:
         for i in range(1, len(nums)):
-            if nums[i]>nums[i-1]:
-                k+=1
-                m = max(m, k)
-            else:
-                k=1
-
-        return m
-
-        
+            nums[i]= nums[i-1]+nums[i]
+        return nums
+       
 '''
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
