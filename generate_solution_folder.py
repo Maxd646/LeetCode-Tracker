@@ -24,14 +24,24 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "1480"
-    problem_title = "Running sum of 1d array"
+    problem_number = "3000"
+    problem_title = "Maximum Area of longest  Diagonal Rectangle"
     solution_code = '''
 class Solution:
-    def runningSum(self, nums: List[int]) -> List[int]:
-        for i in range(1, len(nums)):
-            nums[i]= nums[i-1]+nums[i]
-        return nums
-       
+    def areaOfMaxDiagonal(self, dimensions: List[List[int]]) -> int:
+        mad= 0
+        mar=0
+        re=0
+        for l, m in dimensions:
+            maxd = sqrt(l**2 + m**2)
+            maxr = l*m
+            if maxd>mad:
+                mar=maxr
+                mad=maxd
+            elif maxd==mad and maxr>mar:
+                mar=maxr
+        return mar
+
+        
 '''
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
