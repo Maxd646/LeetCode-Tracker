@@ -24,24 +24,26 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "3000"
-    problem_title = "Maximum Area of longest  Diagonal Rectangle"
+    problem_number = "1071"
+    problem_title = " Greatest Common Divisor of string"
     solution_code = '''
-class Solution:
-    def areaOfMaxDiagonal(self, dimensions: List[List[int]]) -> int:
-        mad= 0
-        mar=0
-        re=0
-        for l, m in dimensions:
-            maxd = sqrt(l**2 + m**2)
-            maxr = l*m
-            if maxd>mad:
-                mar=maxr
-                mad=maxd
-            elif maxd==mad and maxr>mar:
-                mar=maxr
-        return mar
 
+class Solution:
+    def gcdOfStrings(self, str1: str, str2: str) -> str:
+
+        if str1 + str2 != str2 + str1:
+            return ""
+        a=len(str1)
+        b=len(str2)
+        while b>0:
+            a,b=b, a%b
+        return str1[:a]
+# or
+        if str1 + str2 != str2 + str1:
+            return ""
+        gcd_len = math.gcd(len(str1), len(str2))
+        
+        return str1[:gcd_len]
         
 '''
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
