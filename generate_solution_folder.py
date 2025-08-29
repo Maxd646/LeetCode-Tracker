@@ -18,25 +18,27 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     with open(os.path.join(base_path, "README.md"), "w", encoding="utf-8") as f:
         f.write(f"# Leetcode {problem_number} - {title}\n\n")
         f.write(f"[🔗 Problem Link](https://leetcode.com/problems/{slugify(title)}/)\n\n")
-        f.write("## Description\n\n*Time Complexity: O(n^3))\nSpace Complexity: O(1)*\n\n")
+        f.write("## Description\n\n*Time Complexity: O(n^2))\nSpace Complexity: O(n)*\n\n")
         f.write("## Solution\n\nSee [`solution.py`](solution.py)\n")
 
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "1534"
-    problem_title = "Count Good Triplets"
+    problem_number = "2022"
+    problem_title = "Cnver 1D to Array to 2D array"
     solution_code = '''
 
 class Solution:
-    def countGoodTriplets(self, arr: List[int], a: int, b: int, c: int) -> int:
-        n=0
-        for i in range(len(arr)):
-            for j in range(i+1, len(arr)):
-                for k in range(j+1, len(arr)):
-                    if abs(arr[i]-arr[j])<=a and abs(arr[j]-arr[k])<=b and abs(arr[i]-arr[k])<=c:
-                        n+=1
-        return n
+    def construct2DArray(self, original: List[int], m: int, n: int) -> List[List[int]]:
+        if m*n!=len(original):
+            return []
+        result = [[0 for _ in range(n)] for _ in range(m)]
+        k=0
+        for i in range(m):
+            for j in range(n):
+                result[i][j]=original[k]
+                k+=1
+        return result
 
 '''
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
