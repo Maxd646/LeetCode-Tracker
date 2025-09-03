@@ -24,22 +24,22 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "238"
-    problem_title = "Product of Array Except Self"
+    problem_number = "163 pro"
+    problem_title = "Missing Ranges"
     solution_code = '''
-
-class Solution:
-    def productExceptSelf(self, nums: List[int]) -> List[int]:
-        re= [1]* len(nums)
-        prif=sf=1
-        for i in range(len(nums)):
-            re[i]=prif
-            prif*=nums[i]
-
-        for i in range(len(nums)-1, -1, -1):
-            re[i]*= sf
-            sf*=nums[i]
-        return re
+class Soution:
+    def findMissingRanges(self, nums:list, lower: int, upper:int)->list[list[int]]:
+        if len(nums)==0:
+            return [lower, upper]
+        num=[]
+        if nums[0]>lower:
+            num.append([lower+1, nums[0]-1])
+        for i in range(1, len(nums)):
+            if nums[i]-nums[i-1]>1:
+                num.append([nums[i-1]+1, nums[i]-1])   
+        if nums[-1]<upper:
+            num.append([nums[-1]+1, upper])         
+        return num
  
 '''
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
