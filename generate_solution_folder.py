@@ -18,37 +18,28 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     with open(os.path.join(base_path, "README.md"), "w", encoding="utf-8") as f:
         f.write(f"# Leetcode {problem_number} - {title}\n\n")
         f.write(f"[🔗 Problem Link](https://leetcode.com/problems/{slugify(title)}/)\n\n")
-        f.write("## Description\n\n*Time Complexity: O(n))\nSpace Complexity: O(n)*\n\n")
+        f.write("## Description\n\n*Time Complexity: O(n))\nSpace Complexity: O(1)*\n\n")
         f.write("## Solution\n\nSee [`solution.py`](solution.py)\n")
 
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "pro 243"
-    problem_title = "Shortest Distance"
+    problem_number = "2278"
+    problem_title = "Percetage of letter in String"
     solution_code = '''
 
-class Soution:
-    def shortestDistance(self, wordsDict:list[str], word1: str, word2:str)->int:
-        d= float("inf")
-        j, k=-1, -1
-        for i in range(len(nums)):
-            if lower==nums[i]:
-                k=i
-            elif upper==nums[i]:
-                j=i
-            if k!=-1 and j!=-1:
-                d=min(d, abs(j-k))
-        return d
-    # or 
-        for i, ch in enumerate(nums):
-            if ch==lower:
-                k=i
-            elif ch==upper:
-                j=i
-            if k!=-1 and j!=-1:
-                d=min(d, abs(k-j))
-        return d
+class Solution:
+    def percentageLetter(self, s: str, letter: str) -> int:
+        count=0
+        for i in range(len(s)):
+            if s[i]==letter:
+                count+=1
+        return (count*100)//len(s)
+    #  or with bulit count()
+
+       count=s.count(letter)
+       return (count*100)//len(s)
+
  
 '''
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
