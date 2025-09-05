@@ -1,4 +1,4 @@
-# Leetcode 163 pro: Missing Ranges
+# Leetcode pro 163: Missing Ranges
 # https://leetcode.com/problems/missing-ranges/
 
 class Soution:

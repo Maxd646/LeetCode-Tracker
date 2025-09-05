@@ -24,22 +24,31 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "163 pro"
-    problem_title = "Missing Ranges"
+    problem_number = "pro 243"
+    problem_title = "Shortest Distance"
     solution_code = '''
+
 class Soution:
-    def findMissingRanges(self, nums:list, lower: int, upper:int)->list[list[int]]:
-        if len(nums)==0:
-            return [lower, upper]
-        num=[]
-        if nums[0]>lower:
-            num.append([lower+1, nums[0]-1])
-        for i in range(1, len(nums)):
-            if nums[i]-nums[i-1]>1:
-                num.append([nums[i-1]+1, nums[i]-1])   
-        if nums[-1]<upper:
-            num.append([nums[-1]+1, upper])         
-        return num
+    def shortestDistance(self, wordsDict:list[str], word1: str, word2:str)->int:
+        d= float("inf")
+        j, k=-1, -1
+        for i in range(len(nums)):
+            if lower==nums[i]:
+                k=i
+            elif upper==nums[i]:
+                j=i
+            if k!=-1 and j!=-1:
+                d=min(d, abs(j-k))
+        return d
+    # or 
+        for i, ch in enumerate(nums):
+            if ch==lower:
+                k=i
+            elif ch==upper:
+                j=i
+            if k!=-1 and j!=-1:
+                d=min(d, abs(k-j))
+        return d
  
 '''
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
