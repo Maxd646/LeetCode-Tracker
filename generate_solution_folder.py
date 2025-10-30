@@ -18,85 +18,33 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     with open(os.path.join(base_path, "README.md"), "w", encoding="utf-8") as f:
         f.write(f"# Leetcode {problem_number} - {title}\n\n")
         f.write(f"[🔗 Problem Link](https://leetcode.com/problems/{slugify(title)}/)\n\n")
-        f.write("## Description\n\n Time Complexity: O(n))\nSpace Complexity: O(n) \n\n")
+        f.write("## Description\n\n Time Complexity: O(n))\nSpace Complexity: O(1) \n\n")
         f.write("## Solution\n\nSee [`solution.py`](solution.py)\n")
 
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = " Pro 159"
-    problem_title = " Longest Substring with At Most Two Distinct Characters"
+    problem_number = " pro 186"
+    problem_title = " Reverse Words in a String II"
     solution_code = '''
 
 class Solution:
-    """
-    LeetCode 159: Longest Substring with At Most Two Distinct Characters
-    Three methods included:
-    1. Sliding window using dict (O(n) time, O(n) space)
-    2. Brute force with set (O(n^2) time, O(1) space)
-    3. Sliding window using Counter (O(n) time, O(n) space)
-    """
+    class Solution:
+    def reverseWords(self, s: list[str]) -> None:
+        left, right=0, len(s)-1
+        while left<right:
+            s[left], s[right]=s[right], s[left]
+            left+=1
+            right-=1
+        j=0
+        for i in range(len(s)+1):
+            if i==len(s) or s[i]==' ':
+                start, end=j, i-1
+                while start<end:
+                    s[start], s[end]=s[end], s[start]
+                    start+=1
+                    end-=1
+                j=i+1
 
-    # Method 1: Sliding window using dict
-    def lengthOfLongestSubstringTwoDistinct_dict(self, s: str) -> int:
-        if len(set(s)) <= 2:
-            return len(s)
-
-        left = 0
-        max_length = 0
-        seen = {}
-
-        for i, ch in enumerate(s):
-            seen[ch] = seen.get(ch, 0) + 1
-
-            while len(seen) > 2:
-                seen[s[left]] -= 1
-                if seen[s[left]] == 0:
-                    del seen[s[left]]
-                left += 1
-
-            max_length = max(max_length, i - left + 1)
-
-        return max_length
-
-    # Method 2: Brute force using set
-    def lengthOfLongestSubstringTwoDistinct_brute(self, s: str) -> int:
-        if len(set(s)) <= 2:
-            return len(s)
-
-        max_length = 0
-        for start in range(len(s)):
-            seen = set()
-            for end in range(start, len(s)):
-                seen.add(s[end])
-                if len(seen) > 2:
-                    break
-                max_length = max(max_length, end - start + 1)
-
-        return max_length
-
-    # Method 3: Sliding window using Counter
-    def lengthOfLongestSubstringTwoDistinct_counter(self, s: str) -> int:
-        if len(set(s)) <= 2:
-            return len(s)
-
-        left = 0
-        max_length = 0
-        char_count = Counter()
-
-        for right, ch in enumerate(s):
-            char_count[ch] += 1
-
-            while len(char_count) > 2:
-                char_count[s[left]] -= 1
-                if char_count[s[left]] == 0:
-                    del char_count[s[left]]
-                left += 1
-
-            max_length = max(max_length, right - left + 1)
-
-        return max_length
-
-    
 '''
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
