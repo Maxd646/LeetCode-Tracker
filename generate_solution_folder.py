@@ -24,27 +24,26 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = " pro 186"
-    problem_title = " Reverse Words in a String II"
+    problem_number = " pro 25"
+    problem_title = " Shortest Word Distance III "
     solution_code = '''
 
 class Solution:
-    class Solution:
-    def reverseWords(self, s: list[str]) -> None:
-        left, right=0, len(s)-1
-        while left<right:
-            s[left], s[right]=s[right], s[left]
-            left+=1
-            right-=1
-        j=0
-        for i in range(len(s)+1):
-            if i==len(s) or s[i]==' ':
-                start, end=j, i-1
-                while start<end:
-                    s[start], s[end]=s[end], s[start]
-                    start+=1
-                    end-=1
-                j=i+1
+    def shortestWordDistance(self, wordsDic: list[str], word1: str, word2: str) -> int:
+        index1, index2=-1, -1
+        same =(word1==word2)
+        minno=float("inf")
+        for i, words in enumerate(wordsDic):
+            if words==word1:
+                if same and index1!=-1:
+                    minno=min(minno, i-index1)
+                index1=i
+            elif words==word2:
+                index2=i
+            if not same and index1!=-1 and  index2!=-1:
+                minno=min(minno, abs(index1-index2))
+        return minno
+                  
 
 '''
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
