@@ -11,7 +11,7 @@ class Solution:
     """
 
     # Method 1: Sliding window using dict
-    def lengthOfLongestSubstringTwoDistinct_dict(self, s: str) -> int:
+    def lengthOfLongestSubstringTwoDistinct(self, s: str) -> int:
         if len(set(s)) <= 2:
             return len(s)
 
@@ -33,7 +33,7 @@ class Solution:
         return max_length
 
     # Method 2: Brute force using set
-    def lengthOfLongestSubstringTwoDistinct_brute(self, s: str) -> int:
+    def lengthOfLongestSubstringTwoDistinct(self, s: str) -> int:
         if len(set(s)) <= 2:
             return len(s)
 
@@ -48,8 +48,9 @@ class Solution:
 
         return max_length
 
-    # Method 3: Sliding window using Counter
-    def lengthOfLongestSubstringTwoDistinct_counter(self, s: str) -> int:
+    # Method 3: Sliding window using Counter\
+    from collections import Counter
+    def lengthOfLongestSubstringTwoDistinct(self, s: str) -> int:
         if len(set(s)) <= 2:
             return len(s)
 
