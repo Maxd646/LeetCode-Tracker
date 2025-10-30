@@ -4,10 +4,10 @@
 class Soution:
     def findMissingRanges(self, nums:list, lower: int, upper:int)->list[list[int]]:
         if len(nums)==0:
-            return [lower, upper]
+            return [[lower, upper]]
         num=[]
         if nums[0]>lower:
-            num.append([lower+1, nums[0]-1])
+            num.append([lower, nums[0]-1])
         for i in range(1, len(nums)):
             if nums[i]-nums[i-1]>1:
                 num.append([nums[i-1]+1, nums[i]-1])   
