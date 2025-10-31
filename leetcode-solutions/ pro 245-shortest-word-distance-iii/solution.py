@@ -1,4 +1,4 @@
-# Leetcode  pro 25:  Shortest Word Distance III 
+# Leetcode  pro 245:  Shortest Word Distance III 
 # https://leetcode.com/problems/shortest-word-distance-iii/
 
 class Solution:

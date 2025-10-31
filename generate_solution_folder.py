@@ -24,7 +24,7 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = " pro 25"
+    problem_number = " pro 245"
     problem_title = " Shortest Word Distance III "
     solution_code = '''
 
