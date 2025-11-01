@@ -21,7 +21,6 @@ class Solution:
 
         for i, ch in enumerate(s):
             seen[ch] = seen.get(ch, 0) + 1
-
             while len(seen) > 2:
                 seen[s[left]] -= 1
                 if seen[s[left]] == 0:

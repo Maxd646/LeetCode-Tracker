@@ -24,20 +24,32 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = " pro 161"
-    problem_title = " One Edit Distance"
+    problem_number = " pro 246"
+    problem_title = "Strobogrammatic Number"
     solution_code = '''
 class Solution:
-   def isOneEditDistance(self, s: str, t:str) -> bool:
-        if abs(len(s)-len(t))>1:
-            return False
-        if len(s)<len(t):
-            s, t=t, s
-        for i, ch in enumerate(t):
-            if ch!=s[i]:
-                return s[i+1:]==t[i+1:] if len(s)==len(t) else s[i+1:]==t[i:]
-        return len(s)==len(t)+1
-
+    def isStrobogrammatic(self, num: str) -> bool:
+        d = [0, 1, -1, -1, -1, -1, 9, -1, 8, 6] # index ==> value, eg. last one, index=9 val=6
+        i, j = 0, len(num) - 1
+        while i <= j:
+            a, b = int(num[i]), int(num[j])
+            if d[a] != b:
+                return False
+            i, j = i + 1, j - 1
+        return True
+# or
+class Solution(object):
+    def isStrobogrammatic(self, num):
+        pairs = {'0':'0', '1':'1', '6':'9', '8':'8', '9':'6'}
+        start, end = 0, len(num) - 1
+        
+        while start <= end:
+            if num[start] not in pairs or pairs[num[start]] != num[end]:
+                return False
+            start += 1
+            end -= 1
+            
+        return True
 
 '''
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
