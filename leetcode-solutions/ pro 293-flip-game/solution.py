@@ -11,8 +11,8 @@ class Solution:
                 result.append(currentState[:i]+"--"+currentState[i+2:])
         return result
       # or
-      class Solution:
-def generatePossibleNextMoves(self, currentState: str) -> List[str]:
+class Solution:
+    def generatePossibleNextMoves(self, currentState: str) -> List[str]:
         s = list(currentState)
         result = []
         for i, c in enumerate(s[:-1]):
