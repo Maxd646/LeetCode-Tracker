@@ -24,8 +24,8 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = " pro 249"
-    problem_title = "249. Group Shifted Strings"
+    problem_number = " pro 252"
+    problem_title = "Meeting Rooms"
     solution_code = '''
 
 class Solution:
@@ -35,6 +35,5 @@ class Solution:
             if intervals[i][1]>intervals[i+1][0]:
                 return False
         return True
-
 '''
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)

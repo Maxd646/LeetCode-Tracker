@@ -4,30 +4,25 @@
 
 ## Description
 
-## 249. Group Shifted Strings
+## 252. Meeting Rooms
 
-We can shift a string by shifting each of its letters to its successive letter.
-
-For example, "abc" can be shifted to be "bcd".
-We can keep shifting the string to form a sequence.
-
-For example, we can keep shifting "abc" to form the sequence: "abc" -> "bcd" -> ... -> "xyz".
-Given an array of strings strings, group all strings[i] that belong to the same shifting sequence. You may return the answer in any order.
+Given an array of meeting time intervals where intervals[i] = [starti, endi], determine if a person could attend all meetings.
 
 Example 1:
 
-Input: strings = ["abc","bcd","acef","xyz","az","ba","a","z"]
-Output: [["acef"],["a","z"],["abc","bcd","xyz"],["az","ba"]]
+Input: intervals = [[0,30],[5,10],[15,20]]
+Output: false
+
 Example 2:
 
-Input: strings = ["a"]
-Output: [["a"]]
+Input: intervals = [[7,10],[2,4]]
+Output: true
 
 Constraints:
 
-1 <= strings.length <= 200
-1 <= strings[i].length <= 50
-strings[i] consists of lowercase English letters.
+0 <= intervals.length <= 104
+intervals[i].length == 2
+0 <= starti < endi <= 106
 
 ## Complexity
 
