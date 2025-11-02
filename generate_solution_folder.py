@@ -24,16 +24,19 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = " pro 252"
-    problem_title = "Meeting Rooms"
+    problem_number = " pro 280"
+    problem_title = "Wiggle Sort"
     solution_code = '''
 
 class Solution:
-    def canAttendMeetings(self, intervals: list[list[int]]) -> bool:
-        intervals.sort()
-        for i in range(len(intervals)-1):
-            if intervals[i][1]>intervals[i+1][0]:
-                return False
-        return True
+    def wiggleSort(self, nums: list[int]) -> None:
+        nums.sort()
+        i=1
+        while i<len(nums)-1:
+            nums[i], nums[i+1]=nums[i+1], nums[i]
+            i+=2
+        nums
+        
+
 '''
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
