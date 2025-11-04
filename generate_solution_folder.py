@@ -24,33 +24,33 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = " pro 325"
-    problem_title = " Maximum Size Subarray Sum Equals k"
+    problem_number = " pro 356"
+    problem_title = " Line Refiliction"
     solution_code = '''
 class Solution:
-    def maxSubArrayLen(self, nums: list[int], k: int) -> int:
-        d = {0: -1}
-        ans = s = 0
-        for i, x in enumerate(nums):
-            s += x
-            if s - k in d:
-                ans = max(ans, i - d[s - k])
-            if s not in d:
-                d[s] = i
-        return ans
-# or for burt force o(n^2) for time and o(1) for space
+    def isReflected(self, nums= list[list[int]])->bool:
+        maxx, minx=-float("inf"), float("inf")
+        for x, y in nums:
+            maxx=max(maxx, x)
+            minx=min(minx, x)
+        seen=set(tuple(p) for p in nums)
+        mid=(maxx+minx)/2
+        for x, y in nums:
+            row=(2*mid-x, y)
+            if row not in seen: 
+                return False
+        return True
 class Solution:
-    def maxSubArray(self, nums:list[int], n=int )->int:
-        nn=0
-        summ=0
-        for i in range(len(nums)-1):
-            for j in range(i, len(nums)):
-                summ+=nums[j]
-                if summ==k:
-                    nn=max(nn, abs(j-i)+1)
-            summ=0
-        return nn
-
+    def isReflected(self, points: list[list[int]]) -> bool:
+        maxx, minx=-float("inf"), float("inf")
+        seen=set()
+        for x, y in points:
+            maxx=max(maxx, x)
+            minx=min(minx, x)
+            seen.add((x, y))
+        mid=(maxx+minx)
+        return all((mid-x, y) in seen for x, y in points)
+    
         
 '''
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
