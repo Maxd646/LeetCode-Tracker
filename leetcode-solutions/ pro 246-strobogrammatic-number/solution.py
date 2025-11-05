@@ -21,6 +21,5 @@ class Solution(object):
             if num[start] not in pairs or pairs[num[start]] != num[end]:
                 return False
             start += 1
-            end -= 1
-            
+            end -= 1 
         return True
