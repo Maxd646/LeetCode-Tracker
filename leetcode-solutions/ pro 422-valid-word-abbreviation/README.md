@@ -1,6 +1,6 @@
-# Leetcode pro 408 - Valid Word Abbreviation
+# Leetcode pro 422 - Valid Word Square
 
-[🔗 Problem Link](https://leetcode.com/problems/valid-word-abbreviation/)
+[🔗 Problem Link](https://leetcode.com/problems/valid-word-square/)
 
 ## Description
 
