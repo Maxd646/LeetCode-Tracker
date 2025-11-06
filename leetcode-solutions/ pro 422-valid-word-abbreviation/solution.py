@@ -2,7 +2,7 @@
 # https://leetcode.com/problems/valid-word-abbreviation/
 
 class Solution:
-    def validWordSquare(self, words: List[str]) -> bool:
+    def validWordSquare(self, words: list[str]) -> bool:
         m = len(words)
         for i, w in enumerate(words):
             for j, c in enumerate(w):
@@ -11,9 +11,9 @@ class Solution:
         return True
 # or
 class Solution:
-    def validWordSquare(self, words:list(str))-> bool:
-        for i in range(len(word)):
-            for j in range(len(word[i])):
+    def validWordSquare(self, words:list[str])-> bool:
+        for i in range(len(words)):
+            for j in range(len(words[i])):
                 if j>=len(words) or i>=len(words[j]) or words[j][i]!=words[i][j]:
                     return False
         return True

@@ -2,7 +2,7 @@
 # https://leetcode.com/problems/maxium-distance-between-unqual-words-in-array-i1/
 
 class Solution:
-    def maxDistance(self, words: List[str]) -> int:
+    def maxDistance(self, words: list[str]) -> int:
         n = len(words)
         ans = 0
         for i in range(n):
@@ -13,7 +13,7 @@ class Solution:
         return ans
 # or
 class Solution:
-    def maxDistance(self, words: List[str]) -> int:
+    def maxDistance(self, words: list[str]) -> int:
         maxx=0
         if words[0]!=words[-1]:
             return len(words)
