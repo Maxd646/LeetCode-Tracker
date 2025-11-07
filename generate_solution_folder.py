@@ -18,34 +18,30 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     with open(os.path.join(base_path, "README.md"), "w", encoding="utf-8") as f:
         f.write(f"# Leetcode {problem_number} - {title}\n\n")
         f.write(f"[🔗 Problem Link](https://leetcode.com/problems/{slugify(title)}/)\n\n")
-        f.write("## Description\n\n Time Complexity: O(n)\nSpace Complexity: O(n) \n\n")
+        f.write("## Description\n\n Time Complexity: O(n*k)\nSpace Complexity: O(k) \n\n")
         f.write("## Solution\n\nSee [`solution.py`](solution.py)\n")
 
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = " pro 3682"
-    problem_title = " Minimum Index Sum of Common Elements "
+    problem_number = " pro 3672"
+    problem_title = "Sum of Weighted Modes in Subarrays  "
     solution_code = '''
+from collections import Counter
 class Solution:
-    def lateFee(self, num1: list[int], num2: list[int]) -> int:
-        minn=float("inf")
-        seen={num1[i]:i for i in range(len(num1))}
-        for i in range(len(num2)):
-            if num2[i] in seen:
-                minn=min(minn, i+ seen[num2[i]])
-        return minn if minn!=float("inf") else -1
-
- # or for O(n*L)
-class Solution:
-    def lateFee(self, num1: list[int], num2: list[int]) -> int:
-        minn=float("inf")
-        seen=set(num1)
-        for i in range(len(num2)):
-            if num2[i] in seen:
-                j=num1.index(num2[i])
-                minn=min(minn, i+ j)
-        return minn if minn!=float("inf") else -1
-
+    def modeWeight(self, num1: list[int], k: int) -> int:
+        summ=0
+        for i in range(len(num1)-k+1):
+            count=Counter(num1[i:i+k])
+            maxx=0
+            num=0
+            for j, fr in count.items():
+                if fr>maxx:
+                    maxx=fr
+                    num=j
+                elif fr==maxx:
+                    num=min(num, j)
+            summ+=num*maxx
+        return summ
 '''
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
