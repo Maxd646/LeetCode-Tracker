@@ -24,17 +24,24 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = " pro 3662"
-    problem_title = " Filter Characters by Frequency"
+    problem_number = " pro 3641"
+    problem_title = " Longest Semi-Repeating Subarray"
     solution_code = '''
 from collections import Counter
 class Solution:
-    def fre(self, s: str, k: int) -> str:
-        result = ""
-        freq = Counter(s)
-        for ch in s:
-            if freq[ch] < k:
-                result += ch
-        return result
+    def fre(self, nums: list[int], k: int) -> int:
+        maxx=left= rep=0
+        count=Counter()
+        for right in range(len(nums)):
+            count[nums[right]]+=1
+            if count[nums[right]]==2:
+                rep+=1
+            while rep>k:
+                if count[nums[left]]==2:
+                    rep-=1
+                count[nums[left]]-=1
+                left+=1
+            maxx=max(maxx, right-left+1)
+        return maxx
 '''
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
