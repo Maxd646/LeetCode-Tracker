@@ -4,7 +4,10 @@
 class Solution:
     def lateFee(self, num1: list[int], num2: list[int]) -> int:
         minn=float("inf")
-        seen={num1[i]:i for i in range(len(num1))}
+        seen ={}
+        for i , ch in enumerate(num1):
+            if ch not in seen:
+                seen[ch]=i
         for i in range(len(num2)):
             if num2[i] in seen:
                 minn=min(minn, i+ seen[num2[i]])
