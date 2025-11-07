@@ -18,28 +18,23 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     with open(os.path.join(base_path, "README.md"), "w", encoding="utf-8") as f:
         f.write(f"# Leetcode {problem_number} - {title}\n\n")
         f.write(f"[🔗 Problem Link](https://leetcode.com/problems/{slugify(title)}/)\n\n")
-        f.write("## Description\n\n Time Complexity: O(nlogn)\nSpace Complexity: O(n) \n\n")
+        f.write("## Description\n\n Time Complexity: O(n)\nSpace Complexity: O(n) \n\n")
         f.write("## Solution\n\nSee [`solution.py`](solution.py)\n")
 
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = " pro 3667  "
-    problem_title = "Sort Array By Absolute Value"
+    problem_number = " pro 3662"
+    problem_title = " Filter Characters by Frequency"
     solution_code = '''
+from collections import Counter
 class Solution:
-    def sortByAbsoluteValue(self, nums: List[int]) -> List[int]:
-        return sorted(nums, key=lambda x:abs(x))
-# or 
-class Solution:
-    def sortByAbsoluteValue(self, nums: List[int]) -> List[int]:
-        return sorted(nums, key=abs)
-#or 
-class Solution:
-    def sortByAbsoluteValue(self, nums: List[int]) -> List[int]:
-        sort(key=abs)
-        return nums
-
-
+    def fre(self, s: str, k: int) -> str:
+        result = ""
+        freq = Counter(s)
+        for ch in s:
+            if freq[ch] < k:
+                result += ch
+        return result
 '''
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
