@@ -24,27 +24,33 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = " pro 734"
-    problem_title = " Sentence Similarity"
+    problem_number = " pro 760"
+    problem_title = " Find Anagram Mappings"
     solution_code = '''
+# last occurance
 class Solution:  
-    def areSentenceSimilar(self, sentence1:str, sentence2:str, simmlilarpar)-> bool:
-        if len(sentence1)!=len(sentence2):
-            return False
-        s={(a, b) for a, b in simmlilarpar}
-        m=zip(sentence1, sentence2)
-        for a, b in m:
-            if (a==b or(a, b) in s or (b, a) in s)  is False:
-                return False
-        return True
-    # or 
+    def anagramMapper(self, num1:list[int], num2:list[int])-> list[int]:
+        seen={num:i for i, num in enumerate(num2)}
+        return [seen[num] for num in num1]
+# or
 class Solution:  
-    def areSentenceSimilar(self, sentence1:str, sentence2:str, simmlilarpar)-> bool:
-        if len(sentence1)!=len(sentence2):
-            return False
-        if len(sentence1)!=len(sentence2):
-            return False
-        s={(a, b) for a, b in simmlilarpar}
-        return all(a==b or (a, b) in s or (b, a) in s for a, b in zip(sentence1, sentence2))
+    def anagramMapper(self, num1:list[int], num2:list[int])-> list[int]:
+        seen={num:i for i, num in enumerate(num2)}
+        for num in num1:
+            re.append(seen[num])
+
+# for the first occurance
+class Solution:  
+    def anagramMapper(self, num1:list[int], num2:list[int])-> list[int]:
+        seen={}
+        for i, num in enumerate(num2):
+            if num not in seen:
+                seen[num]=i
+        re=[]
+        for nu in num1:
+            re.append(seen[nu])
+        return re
+
+    
 '''
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
