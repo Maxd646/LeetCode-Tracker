@@ -24,8 +24,8 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = " pro 3581"
-    problem_title = "Count Odd Letters from Number"
+    problem_number = " pro 702"
+    problem_title = "Search in a Sorted Array of Unknown Size"
     solution_code = '''
 class Solution:
     def search(self, reader, target):

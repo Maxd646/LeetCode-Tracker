@@ -1,5 +1,5 @@
-# Leetcode  pro 3581: Count Odd Letters from Number
-# https://leetcode.com/problems/count-odd-letters-from-number/
+# Leetcode  pro 702: Search in a Sorted Array of Unknown Size
+# https://leetcode.com/problems/search-in-a-sorted-array-of-unknown-size/
 
 class Solution:
     def search(self, reader, target):
@@ -12,7 +12,7 @@ class Solution:
                 right=mid+1
             else:
                 left+=1
-        return -1
+        retur -1
 # or
 class Solution:
     def search(self, reader, target):
