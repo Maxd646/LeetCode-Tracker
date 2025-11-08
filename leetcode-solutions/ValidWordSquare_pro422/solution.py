@@ -1,5 +1,5 @@
-# Leetcode  pro 422: Valid Word Abbreviation
-# https://leetcode.com/problems/valid-word-abbreviation/
+# Leetcode  pro 422: Valid Word Square
+# https://leetcode.com/problems/valid-word-square/
 
 class Solution:
     def validWordSquare(self, words: list[str]) -> bool:
