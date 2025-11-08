@@ -4,39 +4,45 @@
 
 ## Description
 
-This is an interactive problem.
+You are given an integer n perform the following steps:
 
-You have a sorted array of unique elements and an unknown size. You do not have an access to the array but you can use the ArrayReader interface to access it. You can call ArrayReader.get(i) that:
+Convert each digit of n into its lowercase English word (e.g., 4 → "four", 1 → "one").
+Concatenate those words in the original digit order to form a string s.
 
-returns the value at the ith index (0-indexed) of the secret array (i.e., secret[i]), or
-returns 231 - 1 if the i is out of the boundary of the array.
-You are also given an integer target.
-
-Return the index k of the hidden array where secret[k] == target or return -1 otherwise.
-
-You must write an algorithm with O(log n) runtime complexity.
+Return the number of distinct characters in s that appear an odd number of times.
 
 Example 1:
 
-Input: secret = [-1,0,3,5,9,12], target = 9
-Output: 4
-Explanation: 9 exists in secret and its index is 4.
+Input: n = 41
+
+Output: 5
+
+Explanation:
+
+41 → "fourone"
+
+Characters with odd frequencies: 'f', 'u', 'r', 'n', 'e'. Thus, the answer is 5.
+
 Example 2:
 
-Input: secret = [-1,0,3,5,9,12], target = 2
-Output: -1
-Explanation: 2 does not exist in secret so return -1.
+Input: n = 20
+
+Output: 5
+
+Explanation:
+
+20 → "twozero"
+
+Characters with odd frequencies: 't', 'w', 'z', 'e', 'r'. Thus, the answer is 5.
 
 Constraints:
 
-1 <= secret.length <= 104
--104 <= secret[i], target <= 104
-secret is sorted in a strictly increasing order.
+1 <= n <= 109
 
 ## Complexity
 
-Time Complexity: O(logn)
-Space Complexity: O(1)
+Time Complexity: O(n)
+Space Complexity: O(n)
 
 ## Solution
 
