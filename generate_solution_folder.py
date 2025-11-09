@@ -18,27 +18,47 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     with open(os.path.join(base_path, "README.md"), "w", encoding="utf-8") as f:
         f.write(f"# Leetcode {problem_number} - {title}\n\n")
         f.write(f"[🔗 Problem Link](https://leetcode.com/problems/{slugify(title)}/)\n\n")
-        f.write("## Description\n\n Time Complexity: O(n)\nSpace Complexity: O(n) \n\n")
+        f.write("## Description\n\n Time Complexity: O(log n)\nSpace Complexity: O(1) \n\n")
         f.write("## Solution\n\nSee [`solution.py`](solution.py)\n")
 
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = " pro 1060"
-    problem_title = " missing Element"
+    problem_number = " pro 1064"
+    problem_title = " Fixed Point"
     solution_code = '''
 class Solution:
-    def missingElement(self, nums: list[int], k: int) -> int:
-        m=nums[0]
-        mm=nums[-1]
-        n=0
-        seen=set(nums)
-        for i in range(m, mm+1):
-            if i not in seen:
-                n+=1
-            if n==k:
+    def fixedPoint(self, arr: list[int]) -> int:
+        left, right=0, len(arr)-1
+        while left<right:
+            mid=(left+right)
+            if arr[mid]>=mid:
+                right=mid
+            else:
+                left=mid+1
+        return left if arr[left]==left else -1
+# or O(n) time 
+class Solution:
+    def fixedPoint(self, arr: list[int]) -> int:
+        for i in range(len(arr)):
+            if arr[i]==i:
                 return i
-        if k>n:
-            return mm+(k-n)  
+        return 0
+# or O(n) time
+class Solution:
+    def fixedPoint(self, arr: list[int]) -> int:
+        left, right=0, len(arr)-1
+        minn=float("inf")
+        while left<right:
+            mid =(left+right)//2
+            if arr[mid]==mid:
+                minn=min(minn, mid)
+                left+=1
+                right-=1
+            elif arr[mid]<mid:
+                left=mid+1
+            else:
+                right=mid
+        return minn if minn!=float("inf") else -1 
 '''
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
