@@ -24,33 +24,31 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = " pro 760"
-    problem_title = " Find Anagram Mappings"
+    problem_number = " pro 1056"
+    problem_title = "  Confusing Number"
     solution_code = '''
-# last occurance
-class Solution:  
-    def anagramMapper(self, num1:list[int], num2:list[int])-> list[int]:
-        seen={num:i for i, num in enumerate(num2)}
-        return [seen[num] for num in num1]
+class Solution:
+    def confusingNumber(self, n: int) -> bool:
+        seen= {"0":"0","1": "1", "6":"9", "8":"8", "9":"6"}
+        s=str(n)
+        right=len(s)-1
+        roted=""
+        while right>=0:
+            if s[right] not in seen:
+                return False
+            roted+=seen[s[right]]
+            right-=1
+        return roted!=s 
 # or
-class Solution:  
-    def anagramMapper(self, num1:list[int], num2:list[int])-> list[int]:
-        seen={num:i for i, num in enumerate(num2)}
-        for num in num1:
-            re.append(seen[num])
-
-# for the first occurance
-class Solution:  
-    def anagramMapper(self, num1:list[int], num2:list[int])-> list[int]:
-        seen={}
-        for i, num in enumerate(num2):
-            if num not in seen:
-                seen[num]=i
-        re=[]
-        for nu in num1:
-            re.append(seen[nu])
-        return re
-
-    
+class Solution:
+    def confusingNumber(self, n: int) -> bool:
+        x, y = n, 0
+        d = [0, 1, -1, -1, -1, -1, 9, -1, 8, 6]
+        while x:
+            x, v = divmod(x, 10)
+            if d[v] < 0:
+                return False
+            y = y * 10 + d[v]
+        return y != n
 '''
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
