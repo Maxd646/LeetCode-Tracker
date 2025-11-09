@@ -24,31 +24,21 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = " pro 1056"
-    problem_title = "  Confusing Number"
+    problem_number = " pro 1060"
+    problem_title = " missing Element"
     solution_code = '''
 class Solution:
-    def confusingNumber(self, n: int) -> bool:
-        seen= {"0":"0","1": "1", "6":"9", "8":"8", "9":"6"}
-        s=str(n)
-        right=len(s)-1
-        roted=""
-        while right>=0:
-            if s[right] not in seen:
-                return False
-            roted+=seen[s[right]]
-            right-=1
-        return roted!=s 
-# or
-class Solution:
-    def confusingNumber(self, n: int) -> bool:
-        x, y = n, 0
-        d = [0, 1, -1, -1, -1, -1, 9, -1, 8, 6]
-        while x:
-            x, v = divmod(x, 10)
-            if d[v] < 0:
-                return False
-            y = y * 10 + d[v]
-        return y != n
+    def missingElement(self, nums: list[int], k: int) -> int:
+        m=nums[0]
+        mm=nums[-1]
+        n=0
+        seen=set(nums)
+        for i in range(m, mm+1):
+            if i not in seen:
+                n+=1
+            if n==k:
+                return i
+        if k>n:
+            return mm+(k-n)  
 '''
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
