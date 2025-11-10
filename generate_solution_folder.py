@@ -18,38 +18,28 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     with open(os.path.join(base_path, "README.md"), "w", encoding="utf-8") as f:
         f.write(f"# Leetcode {problem_number} - {title}\n\n")
         f.write(f"[🔗 Problem Link](https://leetcode.com/problems/{slugify(title)}/)\n\n")
-        f.write("## Description\n\n Time Complexity: O(n)\nSpace Complexity: O(1) \n\n")
+        f.write("## Description\n\n Time Complexity: O(n log n)\nSpace Complexity: O(1) \n\n")
         f.write("## Solution\n\nSee [`solution.py`](solution.py)\n")
 
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = " 209"
-    problem_title = " Minimum Size Subarray Sum"
+    problem_number = "pro 1099"
+    problem_title = " Twoo Sum Less Than K"
     solution_code = '''
 class Solution:
-    def minSubArrayLen(self, target: int, nums: List[int]) -> int:
-        summ, x=0, 0
-        minn=float("inf")
-        for i in range(len(nums)):
-            summ+=nums[i]
-            while summ>=target:
-                minn=min(minn, i-x+1)
-                summ-=nums[x]
-                x+=1
-        return minn if minn!=float("inf") else 0
-# or
-class Solution:
-    def minSubArrayLen(self, target: int, nums: List[int]) -> int:
-        summ, x=0, 0
-        minn=float("inf")
-        for i in range(len(nums)):
-            summ+=nums[i]
-            while summ>target:
-                summ-=nums[x]
-                x+=1
-            if minn==target:
-                minn=min(minn, i-x+1)
-        return minn if minn!=float("inf") else 0
+    def twoSumLessThanK(self, nums: list[int], k: int) -> int:
+        nums.sort()
+        maxx=-float("inf")
+        left, right=0, len(nums)-1
+        while left<right:
+            mid=nums[left]+nums[right]
+            if mid>k:
+                right-=1
+            else:
+                maxx=max(maxx, mid)
+                left+=1
+        return maxx if maxx!=-float("inf") else -1
+
 '''
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
