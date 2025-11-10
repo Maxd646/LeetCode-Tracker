@@ -18,28 +18,29 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     with open(os.path.join(base_path, "README.md"), "w", encoding="utf-8") as f:
         f.write(f"# Leetcode {problem_number} - {title}\n\n")
         f.write(f"[🔗 Problem Link](https://leetcode.com/problems/{slugify(title)}/)\n\n")
-        f.write("## Description\n\n Time Complexity: O(n log n)\nSpace Complexity: O(1) \n\n")
+        f.write("## Description\n\n Time Complexity: O(n*k)\nSpace Complexity: O(k) \n\n")
         f.write("## Solution\n\nSee [`solution.py`](solution.py)\n")
 
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
     problem_number = "pro 1099"
-    problem_title = " Twoo Sum Less Than K"
+    problem_title = " Find K-Length Substrings With No Repeated Characters"
     solution_code = '''
 class Solution:
-    def twoSumLessThanK(self, nums: list[int], k: int) -> int:
-        nums.sort()
-        maxx=-float("inf")
-        left, right=0, len(nums)-1
-        while left<right:
-            mid=nums[left]+nums[right]
-            if mid>k:
-                right-=1
+    def numKLenSubstrNoRepeats(self, s: str, k: int) -> int:
+        if len(s)<k or k>26:
+            return 0
+        if len(s)==k:
+            if len(set(len(s)))==len(s):
+                return len(s)
             else:
-                maxx=max(maxx, mid)
-                left+=1
-        return maxx if maxx!=-float("inf") else -1
+                return 0
+        total=0
+        for i in range(len(s)-k+1):
+            if len(set(s[i:i+k]))==k:
+                total+=1
+        return total
 
 '''
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
