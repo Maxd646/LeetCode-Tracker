@@ -24,23 +24,30 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "pro 1134 "
-    problem_title = "  Armstrong Number"
+    problem_number = "pro 1150 "
+    problem_title = " Check If a Number Is Majority Element in a Sorted Array"
     solution_code = '''
 class Solution:
-    def isArmstrong(self, n: int) -> bool:
-        m=n
-        k=len(str(n))
-        summ=0
-        while n!=0:
-            summ+=(n%10)**k
-            n//=10
-        return summ==m  
+    def isMajorityElement(self, nums: list[int], target: int) -> bool:
+        left, right=0, len(nums)-1
+        stat=-1
+        while left<=right:
+            mid=(left+right)//2
+            if nums[mid]==target:
+                stat=mid
+                right=mid-1
+            elif nums[mid]>target:
+                right=mid-1
+            else:
+                left=mid+1
+        if stat==-1:
+            return False
+        if stat+len(nums)//2<len(nums) and nums[stat+len(nums)//2]==target:
+            return True
+        return False
 # or
 class Solution:
-    def isArmstrong(self, n: int) -> bool:
-        digits = str(n)
-        k = len(digits)
-        return sum(int(d)**k for d in digits) == n
+    def isMajorityElement(self, nums: list[int], target: int) -> bool:
+    return nums.count(target)>len(nums)//2
 '''
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
