@@ -1,6 +1,6 @@
-# Leetcode pro 3696 - Maxium distance between Unqual Words in Array I
+# Leetcode pro 3706 - Maxium distance between Unqual Words in Array II
 
-[🔗 Problem Link](https://leetcode.com/problems/maxium-distance-between-unqual-words-in-array-i/)
+[🔗 Problem Link](https://leetcode.com/problems/maxium-distance-between-unqual-words-in-array-ii/)
 
 ## Description
 
