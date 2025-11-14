@@ -18,24 +18,21 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     with open(os.path.join(base_path, "README.md"), "w", encoding="utf-8") as f:
         f.write(f"# Leetcode {problem_number} - {title}\n\n")
         f.write(f"[🔗 Problem Link](https://leetcode.com/problems/{slugify(title)}/)\n\n")
-        f.write("## Description\n\n Time Complexity: O(n)\nSpace Complexity: O(1) \n\n")
+        f.write("## Description\n\n Time Complexity: O(n)\nSpace Complexity: O(n) \n\n")
         f.write("## Solution\n\nSee [`solution.py`](solution.py)\n")
 
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "pro 1151 "
-    problem_title = " 1151. Minimum Swaps to Group All 1’s Together"
+    problem_number = "pro 1165 "
+    problem_title = " Single-Row Keyboard"
     solution_code = '''
 class Solution:
-    def minSwaps(self, data: list[int]) -> int:
-        n=data.count(1)
-        m=sum(data[:n])
-        minn=0
-        for i in range(n, len(data)):
-            m+=data[i]
-            m-=data[i-n]
-            minn=max(minn, m)
-        return n-minn
+    def calculateTime(self, keyboard: str, word: str) -> int:
+        seen={keyboard[i]:i for i in range(len(keyboard))}    
+        summ=seen[word[0]]
+        for i in range(len(word)-1):
+            summ+=abs(seen[word[i]]-seen[word[i+1]])
+        return summ
 '''
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
