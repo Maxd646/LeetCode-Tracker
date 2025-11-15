@@ -18,27 +18,25 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     with open(os.path.join(base_path, "README.md"), "w", encoding="utf-8") as f:
         f.write(f"# Leetcode {problem_number} - {title}\n\n")
         f.write(f"[🔗 Problem Link](https://leetcode.com/problems/{slugify(title)}/)\n\n")
-        f.write("## Description\n\n Time Complexity: O(n)\nSpace Complexity: O(1) \n\n")
+        f.write("## Description\n\n Time Complexity: O(nlog n)\nSpace Complexity: O(1) \n\n")
         f.write("## Solution\n\nSee [`solution.py`](solution.py)\n")
 
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "pro 1180 "
-    problem_title = "Count Substrings with Only One Distinct Letter"
+    problem_number = "pro 1196"
+    problem_title = "How Many Apples Can You Put into the Basket"
     solution_code = '''
 class Solution:
-    def countLetters(self, s: str) -> int:
-        total = 0
-        count = 1   
-
-        for i in range(1, len(s)):
-            if s[i] == s[i-1]:
-                count += 1        
+    def maxNumberOfApples(self, weight: list[int]) -> int:
+        weight.sort()
+        summ=n=0
+        for i in range(len(weight)):
+            summ+=weight[i]
+            if summ>5000:
+                return n
             else:
-                total += count * (count + 1) // 2
-                count = 1  
-        total += count * (count + 1) // 2  
-        return total+1
+                n+=1
+        return n
 '''
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
