@@ -23,7 +23,7 @@ Constraints:
 
 ## Complexity
 
-Time Complexity: O(n)
+Time Complexity: O(n+m+z)
 Space Complexity: O(n)
 
 ## Solution
