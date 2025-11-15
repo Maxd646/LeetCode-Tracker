@@ -24,24 +24,21 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "pro 1176 "
-    problem_title = "Diet Plan Performance"
+    problem_number = "pro 1180 "
+    problem_title = "Count Substrings with Only One Distinct Letter"
     solution_code = '''
 class Solution:
-    def dietPlanPerformance( self, calories: list[int], k: int, lower: int, upper: int) -> int:
-        numm=sum(calories[:k])
-        if numm<lower:
-            point=-1
-        elif numm>upper:
-            point=1
-        else:
-            point=0
-        for i in range(k, len(calories)):
-            numm+=calories[i]-calories[i-k]
-            if numm>upper:
-                point+=1
-            elif numm<lower:
-                point-=1
-        return point
+    def countLetters(self, s: str) -> int:
+        total = 0
+        count = 1   
+
+        for i in range(1, len(s)):
+            if s[i] == s[i-1]:
+                count += 1        
+            else:
+                total += count * (count + 1) // 2
+                count = 1  
+        total += count * (count + 1) // 2  
+        return total+1
 '''
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
