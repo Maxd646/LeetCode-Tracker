@@ -1,6 +1,6 @@
 # Leetcode pro 1229 - Meeting Scheduler
 
-[🔗 Problem Link](https://leetcode.com/problems/1229.-meeting-scheduler/)
+[🔗 Problem Link](https://leetcode.com/problems/1229-meeting-scheduler/)
 
 ## Description
 
