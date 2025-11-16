@@ -18,32 +18,29 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     with open(os.path.join(base_path, "README.md"), "w", encoding="utf-8") as f:
         f.write(f"# Leetcode {problem_number} - {title}\n\n")
         f.write(f"[🔗 Problem Link](https://leetcode.com/problems/{slugify(title)}/)\n\n")
-        f.write("## Description\n\n Time Complexity: O(nlogn +m logm)\nSpace Complexity: O(n) \n\n")
+        f.write("## Description\n\n Time Complexity: O(n* Round)\nSpace Complexity: O(n) \n\n")
         f.write("## Solution\n\nSee [`solution.py`](solution.py)\n")
 
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "pro 1229"
-    problem_title = "1229. Meeting Scheduler"
+    problem_number = "pro 1243"
+    problem_title = "Array Transformation"
     solution_code = '''
 class Solution:
-    def minAvailableDuration(self, slots1: list[list[int]], slots2: list[list[int]], duration: int) -> list[int]:
-        slots1.sort()
-        slots2.sort()
-        n, m = len(slots1), len(slots2)
-        i=j=0
-        while i< n and j<m:
-            start=max(slots1[i][0], slots2[j][0])
-            end=min(slots1[i][1], slots2[j][1])
-            if end-start>=duration:
-                return [start, start+duration]
-            else:
-                if slots1[i][1]<slots2[j][1]:
-                    i+=1
-                else:
-                    j+=1
-        return [] 
+    def transformArray(self, arr: list[int]) -> list[int]:
+        while True:
+            changed=False
+            dd=arr.copy()
+            for i in range(1, len(arr)-1):
+                if(dd[i-1]<dd[i]) and dd[i]>dd[i+1]:
+                    arr[i]-=1
+                    changed=True
+                elif (dd[i-1]>dd[i]) and dd[i]<dd[i+1]:
+                    arr[i]+=1
+                    changed=True
+            if not changed:
+                return arr
 
 '''
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
