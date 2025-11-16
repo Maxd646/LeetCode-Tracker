@@ -18,29 +18,21 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     with open(os.path.join(base_path, "README.md"), "w", encoding="utf-8") as f:
         f.write(f"# Leetcode {problem_number} - {title}\n\n")
         f.write(f"[🔗 Problem Link](https://leetcode.com/problems/{slugify(title)}/)\n\n")
-        f.write("## Description\n\n Time Complexity: O(n* Round)\nSpace Complexity: O(n) \n\n")
+        f.write("## Description\n\n Time Complexity: O(logn)\nSpace Complexity: O(n) \n\n")
         f.write("## Solution\n\nSee [`solution.py`](solution.py)\n")
 
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "pro 1243"
-    problem_title = "Array Transformation"
+    problem_number = "pro 1271"
+    problem_title = "Hexspeak"
     solution_code = '''
 class Solution:
-    def transformArray(self, arr: list[int]) -> list[int]:
-        while True:
-            changed=False
-            dd=arr.copy()
-            for i in range(1, len(arr)-1):
-                if(dd[i-1]<dd[i]) and dd[i]>dd[i+1]:
-                    arr[i]-=1
-                    changed=True
-                elif (dd[i-1]>dd[i]) and dd[i]<dd[i+1]:
-                    arr[i]+=1
-                    changed=True
-            if not changed:
-                return arr
+    def toHexspeak(self, num: str) -> str:
+        s = set('ABCDEFIO')
+        t = hex(int(num))[2:].upper().replace('0', 'O').replace('1', 'I')
+        return t if all(c in s for c in t) else 'ERROR'
+
 
 '''
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
