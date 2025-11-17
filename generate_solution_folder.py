@@ -24,21 +24,33 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "pro 1426"
-    problem_title = "Counting Elements"
+    problem_number = "pro 1836"
+    problem_title = "Remove Duplicates from an Unsorted Linked List"
     solution_code = '''
+# class Node:
+#     def __init__(self, val, next=None):
+#         self.val=val
+#         self.next=next
+from collections import Counter
 class Solution:
-    def countElements(self, arr: list[int]) -> int:
-        s =set(arr)
-        return sum(1 for x in arr if x+1 in s)
-# or
-class Solution:
-    def countElements(self, arr: list[int]) -> int:
-        total=0
-        cout=Counter(arr)
-        for n, cou in cout.items():
-            if n+1 in cout:
-                total+=cou
-        return total
+    def __init__(self):
+        self.head=None   
+        self.tail=None
+    def deleteDuplicatesUnsorted(self, head: Node) -> Node:
+        cout=Counter()
+        hh=head
+        while hh:
+            cout[hh.val]+=1
+            hh=hh.next
+        dummy=Node(0, head)
+        prev, curr= dummy, head
+        while curr:
+            if cout[curr.val]>1:
+                prev.next=curr.next
+            else:
+                prev=curr
+            curr=curr.next
+        return dummy.next
+
 '''
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
