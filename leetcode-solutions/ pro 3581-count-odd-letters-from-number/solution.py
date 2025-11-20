@@ -43,6 +43,6 @@ class Solution:
            9:"nine" }
         word=''.join(d[int(x)] for x in str(n))
         fre=Counter(word)
-        return sum(1 for i, ch in fre.items() if ch <2 )
+        return sum(1 for _, ch in fre.items() if ch <2 )
             
         
