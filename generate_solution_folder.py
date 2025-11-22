@@ -18,26 +18,33 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     with open(os.path.join(base_path, "README.md"), "w", encoding="utf-8") as f:
         f.write(f"# Leetcode {problem_number} - {title}\n\n")
         f.write(f"[🔗 Problem Link](https://leetcode.com/problems/{slugify(title)}/)\n\n")
-        f.write("## Description\n\n Time Complexity: O(n^2)\nSpace Complexity: O(n) \n\n")
+        f.write("## Description\n\n Time Complexity: O(n)\nSpace Complexity: O(1) \n\n")
         f.write("## Solution\n\nSee [`solution.py`](solution.py)\n")
 
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "pro 3571"
-    problem_title = "Shortest Superstring"
+    problem_number = "pro 3460"
+    problem_title = "Longest Common Prefix After at Most One Removal"
     solution_code = '''class Solution:
-def shortestSuperstring(self, s1: str, s2: str) -> str:
-        m, n= len(s1), len(s2)
-        if m>n:
-            return self.shortestSuperstring(s2, s1)
-        if s1 in s2:
-            return s2
-        for i in range(len(m)):
-            if s2.startswith(s1[i:]):
-                return s1[:i] + s2
-            if s2.endswith(s1[: m - i]):
-                return s2 + s1[m - i :]
-        return s1 + s2
+    class Solution:
+    def longestCommonPrefix(self, s: str, t: str) -> int:
+        if s ==t:
+            return len(s)
+        total=n=m=0
+        b=0
+        while n<len(s) and m<len(t):
+            if s[n]==t[m] and b<=1:
+                n+=1
+                m+=1
+                total+=1
+            else:
+                if n+1<len(s):
+                    if s[n+1]==t[m]:
+                        n+=1
+                        b+=1
+                else:
+                    break
+        return total
 '''
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
