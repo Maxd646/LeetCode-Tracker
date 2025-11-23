@@ -2,7 +2,6 @@
 # https://leetcode.com/problems/longest-common-prefix-after-at-most-one-removal/
 
 class Solution:
-    class Solution:
     def longestCommonPrefix(self, s: str, t: str) -> int:
         if s ==t:
             return len(s)
