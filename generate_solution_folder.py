@@ -24,28 +24,43 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "pro 3450"
-    problem_title = "Maximum Students on a Single Bench"
+    problem_number = "pro 3431"
+    problem_title = "Minimum Unlocked Indices to Sort Nums"
     solution_code = '''class Solution:
-from collections import Counter
 class Solution:
-    def maxStudentsOnBench(self, students: list[list[int]]) -> int:
-        nums=set(tuple(p) for p in students)
-        num=Counter()
-        for ch, bnen in nums:
-            num[bnen]+=1
-        maxx=0
-        for _, ch in num.items():
-            maxx=max(maxx, ch)
-        return maxx
+    def minUnlockedIndices(self, nums: List[int], locked: List[int]) -> int:
+        n = len(nums)
+        first2 = first3 = n
+        last1 = last2 = -1
+        for i, x in enumerate(nums):
+            if x == 1:
+                last1 = i
+            elif x == 2:
+                first2 = min(first2, i)
+                last2 = i
+            else:
+                first3 = min(first3, i)
+        if first3 < last1:
+            return -1
+        return sum(
+            st and (first2 <= i < last1 or first3 <= i < last2)
+            for i, st in enumerate(locked)
+        )
 # or
 class Solution:
-    def maxStudentsOnBench(self, students: List[List[int]]) -> int:
-        if not students:
+    def minUnloked(self, nums: list[int], locked: list[int]) -> int:
+        total=0
+        if sorted(nums)==nums:
             return 0
-        d = defaultdict(set)
-        for student_id, bench_id in students:
-            d[bench_id].add(student_id)
-        return max(map(len, d.values()))
+        for i in range(len(nums)):
+            for j in range(i+1, len(nums)-1):
+                if nums[j]>nums[j+1]:
+                    if nums[j]-nums[j+1]==1:
+                        if locked[j]==1:
+                            total+=1
+                        nums[j], nums[j+1]=nums[j+1], nums[j]
+                    else:
+                        return -1
+        return total
 '''
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)

@@ -1,6 +1,7 @@
-# Leetcode pro 3450: Maximum Students on a Single Bench
-# https://leetcode.com/problems/maximum-students-on-a-single-bench/
+# Leetcode pro 3431: Minimum Unlocked Indices to Sort Nums
+# https://leetcode.com/problems/minimum-unlocked-indices-to-sort-nums/
 
+class Solution:
 class Solution:
     def minUnlockedIndices(self, nums: List[int], locked: List[int]) -> int:
         n = len(nums)
@@ -21,9 +22,8 @@ class Solution:
             for i, st in enumerate(locked)
         )
 # or
-
 class Solution:
-    def minUnlockedIndices(self, nums: List[int], locked: List[int]) -> int:
+    def minUnloked(self, nums: list[int], locked: list[int]) -> int:
         total=0
         if sorted(nums)==nums:
             return 0

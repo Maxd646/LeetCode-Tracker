@@ -21,7 +21,6 @@ Explanation:
 Bench 2 has two unique students: [1, 2].
 Bench 3 has three unique students: [1, 2, 3].
 The maximum number of unique students on a single bench is 3.
-
 Example 2:
 
 Input: students = [[1,1],[2,1],[3,1],[4,2],[5,2]]
@@ -33,6 +32,7 @@ Explanation:
 Bench 1 has three unique students: [1, 2, 3].
 Bench 2 has two unique students: [4, 5].
 The maximum number of unique students on a single bench is 3.
+
 Example 3:
 
 Input: students = [[1,1],[1,1]]
@@ -62,7 +62,7 @@ students[i] = [student_id, bench_id]
 ## Complexity
 
 Time Complexity: O(n)
-Space Complexity: O(n)
+Space Complexity: O(1)
 
 ## Solution
 
