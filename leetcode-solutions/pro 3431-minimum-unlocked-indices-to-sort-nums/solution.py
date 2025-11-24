@@ -1,7 +1,7 @@
 # Leetcode pro 3431: Minimum Unlocked Indices to Sort Nums
 # https://leetcode.com/problems/minimum-unlocked-indices-to-sort-nums/
 
-class Solution:
+
 class Solution:
     def minUnlockedIndices(self, nums: List[int], locked: List[int]) -> int:
         n = len(nums)
