@@ -24,22 +24,23 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "pro 3294"
-    problem_title = "Convert Doubly Linked List to Array II"
+    problem_number = "pro 3263"
+    problem_title = "Convert Doubly Linked List to Array I"
     solution_code = '''class Solution:
+"""
+# 
+# class Node:
+   # def __init__(self, val, prev=None, next=None):
+        #self.val = val
+        #self.prev = prev
+        #self.next = next
+"""
 class Solution:
-    def __init__(self, val, next=None, prev=None):
-        self.val=val
-        self.next=next
-        self.prev=prev
-class likedlist:
-    def toArray(self, node: "Optional[Node]") -> list[int]:
-        while node.prev:
-            node=node.prev
-        result=[]
-        while node:
-            result.append(node.val)
-            node=node.next
-        return result
+    def toArray(self, root: "Optional[Node]") -> List[int]:
+        ans = []
+        while root:
+            ans.append(root.val)
+            root = root.next
+        return ans
 '''
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
