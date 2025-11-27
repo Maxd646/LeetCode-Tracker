@@ -24,50 +24,38 @@ def create_leetcode_problem_folder(problem_number, title, solution_code):
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "pro 3167"
-    problem_title = "Better Compression of String"
+    problem_number = "pro 3078"
+    problem_title = "Match Alphanumerical Pattern in Matrix I"
     solution_code = '''class Solution:
     
 """
-from collections import Counter
 class Solution:
-    def betterCompression(self, compressed: str) -> str:
-       
-       count= Counter()
-       i, n=0, len(compressed)
-       while i<n:
-           j=i+1
-           x=0
-           while j<n and  compressed[j].isdigit():
-               x=x*10+int(compressed[j])
-               j+=1
-           count[compressed[i]]+=x
-           i=j
-       return ''.join(f"{v}{x}" for v, x in count.items())
-# or 
-class Solution:
-    def betterCompression(self, compressed: str) -> str:
-        seen={}
-        result=""
-        i=m=0
-        if compressed.isdigit():
-            return compressed
-        while i<len(compressed)-1:
-            if compressed[i].isalpha() and compressed[i]  not in seen :
-                m=i
-                i+=1
-                while i<len(compressed) and compressed[i].isdigit():
-                    i+=1
-                seen[compressed[m]]=int(compressed[m+1:i])
-            elif compressed[i].isalpha() and compressed[i] in seen:
-                m=i
-                i+=1
-                while  i<len(compressed) and compressed[i].isdigit():
-                    i+=1
-                seen[compressed[m]]+=int(compressed[m+1:i])
+    def findPattern(self, board: List[List[int]], pattern: List[str]) -> List[int]:
+        def check(i: int, j: int) -> bool:
+            d1 = {}
+            d2 = {}
+            for a in range(r):
+                for b in range(c):
+                    x, y = i + a, j + b
+                    if pattern[a][b].isdigit():
+                        if int(pattern[a][b]) != board[x][y]:
+                            return False
+                    else:
+                        if pattern[a][b] in d1 and d1[pattern[a][b]] != board[x][y]:
+                            return False
+                        if board[x][y] in d2 and d2[board[x][y]] != pattern[a][b]:
+                            return False
+                        d1[pattern[a][b]] = board[x][y]
+                        d2[board[x][y]] = pattern[a][b]
+            return True
 
-        for ch, nun in seen.items():
-            result+=(ch+str(nun))
-        return result
+        m, n = len(board), len(board[0])
+        r, c = len(pattern), len(pattern[0])
+        for i in range(m - r + 1):
+            for j in range(n - c + 1):
+                if check(i, j):
+                    return [i, j]
+        return [-1, -1]
+
 '''
     create_leetcode_problem_folder(problem_number, problem_title, solution_code)
