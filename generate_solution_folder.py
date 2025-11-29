@@ -24,36 +24,31 @@ def create_leetcode_problem_folder(problem_number, title, solution_code, descrip
         else:
             f.write("No description provided.\n\n")
         f.write("## Complexity Analysis\n\n")
-        f.write("Time Complexity: O(n log n)\n")
-        f.write("Space Complexity: O(n)\n\n")
+        f.write("Time Complexity: O(n)\n")
+        f.write("Space Complexity: O(1)\n\n")
         f.write("## Solution\n\nSee [`solution.py`](solution.py)\n")
 
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "pro 1772"
-    problem_title = "Sort Features by Popularity"
+    problem_number = "pro 2229"
+    problem_title = " Check if an Array Is Consecutive"
     solution_code = '''class Solution:  
 """
 class Solution:
-    def sortFeatures(self, features: List[str], responses: List[str]) -> List[str]:
-        cnt = Counter()
-        for s in responses:
-            for w in set(s.split()):
-                cnt[w] += 1
-        return sorted(features, key=lambda w: -cnt[w])
-# or
-from collections import Counter
-    def sortFeatures(self, features: List[str], responses: List[str]) -> List[str]:
-        count=Counter()
-        for s in  responses:
-            for w in set(s.split()):
-                count[w]+=1
-        for i in range(len(features)):
-            for j in range(i, len(features)):
-                if count[features[i]]<count[features[j]]:
-                    features[i], features[j]=features[j], features[i]
-        return features
+    def isConsecutive(self, nums: List[int]) -> bool:
+        mi, mx = min(nums), max(nums)
+        n = len(nums)
+        return len(set(nums)) == n and mx == mi + n - 1
+#or 
+class Solution:
+    def isConsecutive(self, nums: List[int]) -> bool:
+        x=len(nums)
+        n=min(nums)
+        for i in range(n, n + x):
+            if i not in set(nums):
+                return False
+        return True
 """
 '''
     description_text = """ You are given a string array features where features[i] is a single word that represents the name of a feature of the latest product you are working on. You have made a survey where users have reported which features they like. You are given a string array responses, where each responses[i] is a string containing space-separated words.
