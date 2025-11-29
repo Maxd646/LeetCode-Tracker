@@ -31,37 +31,62 @@ def create_leetcode_problem_folder(problem_number, title, solution_code, descrip
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "pro 360"
-    problem_title = "Sort Transformed Array"
+    problem_number = "pro 1772"
+    problem_title = "Sort Features by Popularity"
     solution_code = '''class Solution:  
 """
-    def sortTransformedArray(self, nums: List[int], a: int, b: int, c: int) -> List[int]:
-        num=[]
-        for i in range(len(nums)):
-            num.append(a*(nums[i]**2) + b*nums[i] + c)
-        num.sort()
-        return num
+class Solution:
+    def sortFeatures(self, features: List[str], responses: List[str]) -> List[str]:
+        cnt = Counter()
+        for s in responses:
+            for w in set(s.split()):
+                cnt[w] += 1
+        return sorted(features, key=lambda w: -cnt[w])
+# or
+from collections import Counter
+    def sortFeatures(self, features: List[str], responses: List[str]) -> List[str]:
+        count=Counter()
+        for s in  responses:
+            for w in set(s.split()):
+                count[w]+=1
+        for i in range(len(features)):
+            for j in range(i, len(features)):
+                if count[features[i]]<count[features[j]]:
+                    features[i], features[j]=features[j], features[i]
+        return features
 """
 '''
-    description_text = """ 360.Sort Transformed Array
-Description
-Given a sorted integer array nums and three integers a, b and c, apply a quadratic function of the form f(x) = ax2 + bx + c to each element nums[i] in the array, and return the array in a sorted order.
+    description_text = """ You are given a string array features where features[i] is a single word that represents the name of a feature of the latest product you are working on. You have made a survey where users have reported which features they like. You are given a string array responses, where each responses[i] is a string containing space-separated words.
 
+The popularity of a feature is the number of responses[i] that contain the feature. You want to sort the features in non-increasing order by their popularity. If two features have the same popularity, order them by their original index in features. Notice that one response could contain the same feature multiple times; this feature is only counted once in its popularity.
+
+Return the features in sorted order.
+
+ 
 
 Example 1:
 
-Input: nums = [-4,-2,2,4], a = 1, b = 3, c = 5
-Output: [3,9,15,33]
+Input: features = ["cooler","lock","touch"], responses = ["i like cooler cooler","lock touch cool","locker like touch"]
+Output: ["touch","cooler","lock"]
+Explanation: appearances("cooler") = 1, appearances("lock") = 1, appearances("touch") = 2. Since "cooler" and "lock" both had 1 appearance, "cooler" comes first because "cooler" came first in the features array.
+
 Example 2:
 
-Input: nums = [-4,-2,2,4], a = -1, b = 3, c = 5
-Output: [-23,-5,1,7]
-
+Input: features = ["a","aa","b","c"], responses = ["a","a aa","a a a a a","b a"]
+Output: ["a","aa","b","c"]
+ 
 
 Constraints:
 
-1 <= nums.length <= 200
--100 <= nums[i], a, b, c <= 100
-nums is sorted in ascending order."""
+1 <= features.length <= 104
+1 <= features[i].length <= 10
+features contains no duplicates.
+features[i] consists of lowercase letters.
+1 <= responses.length <= 102
+1 <= responses[i].length <= 103
+responses[i] consists of lowercase letters and spaces.
+responses[i] contains no two consecutive spaces.
+responses[i] has no leading or trailing spaces.
+"""
     
     create_leetcode_problem_folder(problem_number, problem_title, solution_code, description_text)
