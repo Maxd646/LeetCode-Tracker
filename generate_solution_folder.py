@@ -31,15 +31,37 @@ def create_leetcode_problem_folder(problem_number, title, solution_code, descrip
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "pro 3078"
-    problem_title = "Match Alphanumerical Pattern in Matrix I"
+    problem_number = "pro 360"
+    problem_title = "Sort Transformed Array"
     solution_code = '''class Solution:  
 """
-Your solution code here
+    def sortTransformedArray(self, nums: List[int], a: int, b: int, c: int) -> List[int]:
+        num=[]
+        for i in range(len(nums)):
+            num.append(a*(nums[i]**2) + b*nums[i] + c)
+        num.sort()
+        return num
 """
 '''
-    description_text = """Given a matrix of alphanumerical characters, 
-find if the matrix matches a given alphanumerical pattern. 
-Return True if the pattern exists, otherwise False."""
+    description_text = """ 360.Sort Transformed Array
+Description
+Given a sorted integer array nums and three integers a, b and c, apply a quadratic function of the form f(x) = ax2 + bx + c to each element nums[i] in the array, and return the array in a sorted order.
+
+
+Example 1:
+
+Input: nums = [-4,-2,2,4], a = 1, b = 3, c = 5
+Output: [3,9,15,33]
+Example 2:
+
+Input: nums = [-4,-2,2,4], a = -1, b = 3, c = 5
+Output: [-23,-5,1,7]
+
+
+Constraints:
+
+1 <= nums.length <= 200
+-100 <= nums[i], a, b, c <= 100
+nums is sorted in ascending order."""
     
     create_leetcode_problem_folder(problem_number, problem_title, solution_code, description_text)
