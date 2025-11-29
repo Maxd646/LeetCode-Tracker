@@ -47,7 +47,7 @@ Constraints:
 
 ## Complexity
 
-Time Complexity: O(nlogn)
+Time Complexity: O(n)
 Space Complexity: O(n)
 
 ## Solution

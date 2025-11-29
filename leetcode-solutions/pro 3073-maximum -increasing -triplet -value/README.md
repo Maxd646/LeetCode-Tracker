@@ -1,4 +1,4 @@
-# Leetcode pro 3078 - Match Alphanumerical Pattern in Matrix I
+# Leetcode pro 3073 -Maximum Increasing Triplet Value
 
 [🔗 Problem Link](https://leetcode.com/problems/match-alphanumerical-pattern-in-matrix-i/)
 
