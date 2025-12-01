@@ -11,3 +11,4 @@ class Solution:
             if ch!=s[i]:
                 return s[i+1:]==t[i+1:] if len(s)==len(t) else s[i+1:]==t[i:]
         return len(s)==len(t)+1
+

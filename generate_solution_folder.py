@@ -31,90 +31,66 @@ def create_leetcode_problem_folder(problem_number, title, solution_code, descrip
     print(f"[✅] Created folder and files at: {base_path}")
 
 if __name__ == "__main__":
-    problem_number = "pro 3631"
-    problem_title = " Sort Threats by Severity and Exploitability"
+    problem_number = "pro 2219"
+    problem_title = "  Maximum Sum Score of Array"
     solution_code = '''class Solution:  
 """
 class Solution:
-    def sortThreats(self, threats: List[List[int]]) -> List[List[int]]:
-        return sorted(threats,key=lambda x:(-(2 * x[1] + x[2]), x[0]))
-# or 
+    def maxSum(self, nums:List[int])->int:
+        max_n=-float("inf")
+        suml,sumr=0, sum(nums)
+        for i in range(len(nums)):
+            suml+=nums[i]
+            if i!=0:
+                sumr-=nums[i]
+            max_n=max(max_n, suml, sumr)
+        return max_n
+# or brutal force
 class Solution:
-    def sortThreats(self, threats: List[List[int]]) -> List[List[int]]:
-        score=[0]*len(threats)
-        for i in range(len(threats)):
-            score[i] = 2 * threats[i][1] + threats[i][2]
-            for j in range(i+1, len(threats)):
-                score[j] = 2 * threats[j][1] + threats[j][2]
-                if score[i]<score[j]:
-                    threats[i], threats[j]=threats[j], threats[i]
-                elif score[i]==score[j] and threats[i][0]>threats[j][0]:
-                    threats[i], threats[j]=threats[j], threats[i] 
-        return threats
-            
-# or
-class Solution:
-    def sortThreats(self, threats: List[List[int]]) -> List[List[int]]:
-        threats.sort(key=lambda x:(-(2 * x[1] + x[2]), x[0]))
-        return threats
+    def maxSum(self, nums:List[int])->int:
+        max_n=-float("inf")
+        for i in range(len(nums)):
+            max_n=max(max_n, sum(nums[:i+1]), sum(nums[i+1:]) if i<len(nums)-1 else -float("inf"))
+        return max_n
 """
 '''
     description_text = """ 
-You are given a 2D integer array threats, where each threats[i] = [IDi, sevi​, expi]
+You are given a 0-indexed integer array nums of length n.
 
-IDi: Unique identifier of the threat.
-sevi: Indicates the severity of the threat.
-expi: Indicates the exploitability of the threat.
-The score of a threat i is defined as: score = 2 × sevi + expi
+The sum score of nums at an index i where 0 <= i < n is the maximum of:
 
-Your task is to return threats sorted in descending order of score.
+The sum of the first i + 1 elements of nums.
+The sum of the last n - i elements of nums.
 
-
-If multiple threats have the same score, sort them by ascending ID​​​​​​​.
+Return the maximum sum score of nums at any index.
 
  
 
 Example 1:
 
-Input: threats = [[101,2,3],[102,3,2],[103,3,3]]
-
-Output: [[103,3,3],[102,3,2],[101,2,3]]
-
+Input: nums = [4,3,-2,5]
+Output: 10
 Explanation:
-
-Threat	ID	sev	exp	Score = 2 × sev + exp
-threats[0]	101	2	3	2 × 2 + 3 = 7
-threats[1]	102	3	2	2 × 3 + 2 = 8
-threats[2]	103	3	3	2 × 3 + 3 = 9
-Sorted Order: [[103, 3, 3], [102, 3, 2], [101, 2, 3]]
-
+The sum score at index 0 is max(4, 4 + 3 + -2 + 5) = max(4, 10) = 10.
+The sum score at index 1 is max(4 + 3, 3 + -2 + 5) = max(7, 6) = 7.
+The sum score at index 2 is max(4 + 3 + -2, -2 + 5) = max(5, 3) = 5.
+The sum score at index 3 is max(4 + 3 + -2 + 5, 5) = max(10, 5) = 10.
+The maximum sum score of nums is 10.
 Example 2:
 
-Input: threats = [[101,4,1],[103,1,5],[102,1,5]]
-
-Output: [[101,4,1],[102,1,5],[103,1,5]]
-
-Explanation:​​​​​​​
-
-Threat	ID	sev	exp	Score = 2 × sev + exp
-threats[0]	101	4	1	2 × 4 + 1 = 9
-threats[1]	103	1	5	2 × 1 + 5 = 7
-threats[2]	102	1	5	2 × 1 + 5 = 7
-threats[1] and threats[2] have same score, thus sort them by ascending ID.
-
-Sorted Order: [[101, 4, 1], [102, 1, 5], [103, 1, 5]]
-
+Input: nums = [-3,-5]
+Output: -3
+Explanation:
+The sum score at index 0 is max(-3, -3 + -5) = max(-3, -8) = -3.
+The sum score at index 1 is max(-3 + -5, -5) = max(-8, -5) = -5.
+The maximum sum score of nums is -3.
  
-
 
 Constraints:
 
-1 <= threats.length <= 105
-threats[i] == [IDi, sevi, expi]
-1 <= IDi <= 106
-1 <= sevi <= 109
-1 <= expi <= 109
-All IDi are unique
+n == nums.length
+1 <= n <= 105
+-105 <= nums[i] <= 105
 """
     
     create_leetcode_problem_folder(problem_number, problem_title, solution_code, description_text)

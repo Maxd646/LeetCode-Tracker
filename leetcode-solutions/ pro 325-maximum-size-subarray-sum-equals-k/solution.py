@@ -14,7 +14,7 @@ class Solution:
         return ans
 # or for burt force o(n^2) for time and o(1) for space
 class Solution:
-    def maxSubArray(self, nums:list[int], n=int )->int:
+    def maxSubArray(self, nums:list[int], k=int )->int:
         nn=0
         summ=0
         for i in range(len(nums)-1):
